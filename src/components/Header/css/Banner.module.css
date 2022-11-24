@@ -1,0 +1,42 @@
+a:hover {
+  color: black;
+}
+.banner {
+  padding-top: 117px;
+  background: #2a5dc4;
+  /* border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px; */
+  position: relative;
+}
+
+.logoBanner img {
+  margin-top: -70px;
+  margin-left: 150px;
+  width: 70%;
+  z-index: -1;
+}
+
+.bannerTitles {
+  padding-top: 30px;
+}
+
+.bannerTitles p {
+  color: white;
+}
+
+.bannerTitles h1 {
+  color: white;
+}
+
+@media (max-width: 777px) {
+  .banner {
+    padding-top: 32px;
+  }
+}
+
+@media (max-width: 777px) {
+  .logoBanner img {
+    margin-left: 0;
+    width: 100%;
+  }
+}
