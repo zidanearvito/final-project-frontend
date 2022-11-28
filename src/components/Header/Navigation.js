@@ -2,8 +2,12 @@ import React from "react";
 import classes from './css/Navigation.module.css'
 import Button from "../UI/MainButton";
 import logo from './img/logo1.png'
+import { logout } from "../../store/actions/auth";
+import { useDispatch } from "react-redux";
 
 const Navigation = () => {
+
+  const dispatch = useDispatch()
 
   const token = window.localStorage.getItem('accessToken')
 
@@ -74,7 +78,7 @@ const Navigation = () => {
               <li className="nav-item ms-2">
                 {!token ? <a href="/register">
                 <Button>Register</Button>
-                </a> : <a href="/logout"> <Button>Logout</Button> </a> }
+                </a> : <Button onClick={() => dispatch(logout())}>Logout</Button> }
               </li>
             </ul>
           </div>
