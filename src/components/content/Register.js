@@ -11,38 +11,38 @@ const Register = () => {
   const history = useNavigate();
 
   const [firstName, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleFirstName = (event) => {
-    setFirstName(event.target.value)
-  }
+    setFirstName(event.target.value);
+  };
 
   const handleLastName = (event) => {
-    setLastName(event.target.value)
-  }
+    setLastName(event.target.value);
+  };
 
   const handleEmail = (event) => {
-    setEmail(event.target.value)
-  }
+    setEmail(event.target.value);
+  };
 
   const handlePassword = (event) => {
-    setPassword(event.target.value)
-  }
+    setPassword(event.target.value);
+  };
 
   const registForm = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     const data = {
       firstName,
-      lastname,
+      lastName,
       email,
-      password
-    }
+      password,
+    };
 
-    dispatch(register(data, history))
-  }
+    dispatch(register(data, history));
+  };
 
   return (
     <div className="wrapper d-flex justify-content-center position-relative mt-5">
@@ -53,7 +53,7 @@ const Register = () => {
           </div>
           <h5 className={classes.textJoin}>Join Us!</h5>
           <p className={classes.textCreate}>Create your account</p>
-          
+
           <form onSubmit={registForm}>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
@@ -73,12 +73,11 @@ const Register = () => {
                 <img src="" alt="" />
               </span>
               <input
-                value={lastname}
+                value={lastName}
                 onChange={handleLastName}
                 type="text"
                 className="form-control"
                 placeholder="Last Name"
-                required="required"
               />
             </div>
             <div className="input-group mb-3 px-5">
