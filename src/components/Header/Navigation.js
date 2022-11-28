@@ -4,6 +4,10 @@ import Button from "../UI/MainButton";
 import logo from './img/logo1.png'
 
 const Navigation = () => {
+
+  const token = window.localStorage.getItem('accessToken')
+
+  // console.log(token)
   return (
     <nav
       className="navbar navbar-expand-lg fixed-top"
@@ -12,7 +16,7 @@ const Navigation = () => {
       <div className="container px-lg-5 my-2">
         <div className={classes.logo}>
           <a href="/">
-            <img onClick="" src={logo} alt="" />
+            <img src={logo} alt="" />
           </a>
         </div>
         <button
@@ -68,9 +72,9 @@ const Navigation = () => {
                 </a>
               </li>
               <li className="nav-item ms-2">
-                <a href="/register">
+                {!token ? <a href="/register">
                 <Button>Register</Button>
-                </a>
+                </a> : <a href="/logout"> <Button>Logout</Button> </a> }
               </li>
             </ul>
           </div>
