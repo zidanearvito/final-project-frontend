@@ -1,4 +1,4 @@
-import {  REGISTER } from '../types/index';
+import {  REGISTER, LOGOUT } from '../types/index';
 
 const initialState = {
   data: window.localStorage.getItem('data') || {},
@@ -25,13 +25,13 @@ const authReducer = (state = initialState, action) => {
         accessToken: payload.accessToken,
         isLoggedIn: true
       }
-    // case LOGOUT:
-    //   return {
-    //     ...state,
-    //     data: {},
-    //     accessToken: '',
-    //     isLoggedIn: false
-    //   }
+    case LOGOUT:
+      return {
+        ...state,
+        data: {},
+        accessToken: '',
+        isLoggedIn: false
+      }
     // case UPDATE_PROFILE:
     //   return {
     //     ...state,
