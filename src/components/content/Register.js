@@ -88,7 +88,7 @@ const Register = () => {
               <input
                 value={email}
                 onChange={handleEmail}
-                type="text"
+                type="email"
                 className="form-control"
                 placeholder="Email"
                 id="email"
@@ -131,7 +131,7 @@ const Register = () => {
           <div>
             <p className={classes.login}>
               already have an account?
-              <a href="/">Sign in</a>
+              <a href="/login">Sign in</a>
             </p>
           </div>
         </div>
