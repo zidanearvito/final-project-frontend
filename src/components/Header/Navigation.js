@@ -1,15 +1,14 @@
 import React from "react";
-import classes from './css/Navigation.module.css'
+import classes from "./css/Navigation.module.css";
 import Button from "../UI/MainButton";
-import logo from './img/logo1.png'
+import logo from "./img/logo1.png";
 import { logout } from "../../store/actions/auth";
 import { useDispatch } from "react-redux";
 
 const Navigation = () => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-
-  const token = window.localStorage.getItem('accessToken')
+  const token = window.localStorage.getItem("accessToken");
 
   // console.log(token)
   return (
@@ -76,9 +75,13 @@ const Navigation = () => {
                 </a>
               </li>
               <li className="nav-item ms-2">
-                {!token ? <a href="/register">
-                <Button>Register</Button>
-                </a> : <Button onClick={() => dispatch(logout())}>Logout</Button> }
+                {!token ? (
+                  <a href="/register">
+                    <Button>Register</Button>
+                  </a>
+                ) : (
+                  <Button onClick={() => dispatch(logout())}>Logout</Button>
+                )}
               </li>
             </ul>
           </div>
