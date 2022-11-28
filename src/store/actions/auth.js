@@ -1,5 +1,5 @@
 import AuthService from "../../services/authService";
-import { REGISTER } from '../types/index';
+import { REGISTER, LOGOUT } from '../types/index';
 
 // export const login = (params, history) => async function (dispatch) {
 //   try {
@@ -23,15 +23,15 @@ export const register = (params, history) => async function (dispatch) {
   }
 }
 
-// export const logout = (params, history) => async function (dispatch) {
-//   try {
-//     AuthService.logout(params)
-//     dispatch({ type: LOGOUT })
-//   } catch (error) {
-//     console.log(error)
-//     throw error
-//   }
-// }
+export const logout = (params, history) => async function (dispatch) {
+  try {
+    AuthService.logout(params)
+    dispatch({ type: LOGOUT })
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
 
 // export const updateProfile = (params) => async function (dispatch) {
 //   try {
