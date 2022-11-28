@@ -26,11 +26,11 @@ const AuthService = {
     }
   },
 
-  // logout: () => {
-  //   API.defaults.headers['Authorization'] = '';
-  //   localStorage.removeItem('user');
-  //   localStorage.removeItem('token');
-  // },
+  logout: () => {
+    API.defaults.headers['Authorization'] = '';
+    localStorage.removeItem('name');
+    localStorage.removeItem('accessToken');
+  },
 
 //   updateProfile: async function (data) {
 //     try {
