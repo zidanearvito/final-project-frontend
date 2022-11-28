@@ -1,9 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Button from "../UI/Button";
 import classes from "./css/Register.module.css";
 import logo from "./img/logo.png";
+import { register } from "../../store/actions/auth";
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const history = useNavigate();
+
+  const [firstName, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleFirstName = (event) => {
+    setFirstName(event.target.value)
+  }
+
+  const handleLastName = (event) => {
+    setLastName(event.target.value)
+  }
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+  }
+
+  const registForm = (event) => {
+    event.preventDefault()
+
+    const data = {
+      firstName,
+      lastname,
+      email,
+      password
+    }
+
+    dispatch(register(data, history))
+  }
+
   return (
     <div className="wrapper d-flex justify-content-center position-relative mt-5">
       <div className={classes.box}>
@@ -13,21 +53,19 @@ const Register = () => {
           </div>
           <h5 className={classes.textJoin}>Join Us!</h5>
           <p className={classes.textCreate}>Create your account</p>
-          <form>
+          
+          <form onSubmit={registForm}>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
                 <img src="" alt="" />
               </span>
               <input
-                value=""
-                onChange=""
+                value={firstName}
+                onChange={handleFirstName}
                 type="text"
                 className="form-control"
                 placeholder="First Name"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                id="username"
-                required
+                required="required"
               />
             </div>
             <div className="input-group mb-3 px-5">
@@ -35,15 +73,12 @@ const Register = () => {
                 <img src="" alt="" />
               </span>
               <input
-                value=""
-                onChange=""
+                value={lastname}
+                onChange={handleLastName}
                 type="text"
                 className="form-control"
                 placeholder="Last Name"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                id="username"
-                required
+                required="required"
               />
             </div>
             <div className="input-group mb-3 px-5">
@@ -51,15 +86,13 @@ const Register = () => {
                 <img src="" alt="" />
               </span>
               <input
-                value=""
-                onChange=""
+                value={email}
+                onChange={handleEmail}
                 type="text"
                 className="form-control"
                 placeholder="Email"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
                 id="email"
-                required
+                required="required"
               />
             </div>
             <div className="input-group mb-3 px-5">
@@ -67,18 +100,15 @@ const Register = () => {
                 <img src="" alt="" />
               </span>
               <input
-                value=""
-                onChange=""
+                value={password}
+                onChange={handlePassword}
                 type="password"
                 className="form-control"
                 placeholder="Password"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                id="password"
-                required
+                required="required"
               />
             </div>
-            <div className="input-group mb-3 px-5">
+            {/* <div className="input-group mb-3 px-5">
               <span className="input-group-text">
                 <img src="" alt="" />
               </span>
@@ -91,11 +121,11 @@ const Register = () => {
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 id="confirm-password"
-                required
+                required="required"
               />
-            </div>
+            </div> */}
             <div className="text-center">
-              <Button>Register</Button>
+              <Button type="submit">Register</Button>
             </div>
           </form>
           <div>
