@@ -75,12 +75,14 @@ const Navigation = () => {
                 </a>
               </li>
               <li className="nav-item ms-2">
-                {!token ? (
+                {token ? (
+                  <a href="/">
+                    <Button onClick={() => dispatch(logout())}>Logout</Button>
+                  </a>
+                ) : (
                   <a href="/register">
                     <Button>Register</Button>
                   </a>
-                ) : (
-                  <Button onClick={() => dispatch(logout())}>Logout</Button>
                 )}
               </li>
             </ul>
