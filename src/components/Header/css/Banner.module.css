@@ -28,13 +28,21 @@ a:hover {
   color: white;
 }
 
+.bannerTitles Button {
+  margin-bottom: 50px;
+}
+
 @media (max-width: 777px) {
   .banner {
     padding-top: 60px;
   }
   .logoBanner img {
     margin-left: 0;
+    margin-bottom: 20px;
     width: 100%;
     margin-top: 10px;
+  }
+  .bannerTitles Button {
+    margin-bottom: 30px;
   }
 }
