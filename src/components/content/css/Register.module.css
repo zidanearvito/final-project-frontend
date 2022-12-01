@@ -85,3 +85,10 @@
   z-index: 10;
   text-align: center;
 }
+
+.errMessage {
+  margin-left: 50px;
+  width: 325px;
+  text-align: left;
+  justify-content: center;
+}

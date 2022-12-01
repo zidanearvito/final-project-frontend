@@ -13,7 +13,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginForm = (event) => {
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("Error");
+
+  const loginForm = async (event) => {
     event.preventDefault();
 
     const data = {
@@ -21,7 +24,16 @@ const Login = () => {
       password,
     };
 
-    dispatch(login(data, history));
+    const res = await dispatch(login(data, history))
+      .then((response) => ({ response }))
+      .catch((error) => ({ error }));
+
+    console.log(res.error);
+
+    if (res.error) {
+      setError(true);
+      setErrorMessage(res.error.response.data.message);
+    }
   };
 
   return (
@@ -33,6 +45,13 @@ const Login = () => {
           </div>
           <h5 className={classes.textJoin}>Join Us!</h5>
           <p className={classes.textCreate}>Login Here</p>
+          {error && (
+            <div className={classes.errMessage}>
+              <div class="alert alert-danger" role="alert">
+                {errorMessage}
+              </div>
+            </div>
+          )}
 
           <form onSubmit={loginForm}>
             <div className="input-group mb-3 px-5">
@@ -41,7 +60,7 @@ const Login = () => {
               </span>
               <input
                 value={email}
-                onChange={ event => setEmail(event.target.value)}
+                onChange={(event) => setEmail(event.target.value)}
                 type="email"
                 className="form-control"
                 placeholder="Email"
@@ -55,7 +74,7 @@ const Login = () => {
               </span>
               <input
                 value={password}
-                onChange={event => setPassword(event.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
                 type="password"
                 className="form-control"
                 placeholder="Password"

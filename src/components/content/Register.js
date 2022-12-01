@@ -15,6 +15,9 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("Error");
+
   const handleFirstName = (event) => {
     setFirstName(event.target.value);
   };
@@ -31,7 +34,7 @@ const Register = () => {
     setPassword(event.target.value);
   };
 
-  const registForm = (event) => {
+  const registForm = async (event) => {
     event.preventDefault();
 
     const data = {
@@ -41,7 +44,16 @@ const Register = () => {
       password,
     };
 
-    dispatch(register(data, history));
+    const res = await dispatch(register(data, history))
+      .then((response) => ({ response }))
+      .catch((error) => ({ error }));
+
+    console.log(res.error);
+
+    if (res.error) {
+      setError(true);
+      setErrorMessage(res.error.response.data.message);
+    }
   };
 
   return (
@@ -53,6 +65,13 @@ const Register = () => {
           </div>
           <h5 className={classes.textJoin}>Join Us!</h5>
           <p className={classes.textCreate}>Create your account</p>
+          {error && (
+            <div className={classes.errMessage}>
+              <div class="alert alert-danger" role="alert">
+                {errorMessage}
+              </div>
+            </div>
+          )}
 
           <form onSubmit={registForm}>
             <div className="input-group mb-3 px-5">
