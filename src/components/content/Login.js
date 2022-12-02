@@ -5,6 +5,8 @@ import Button from "../UI/Button";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../store/actions/auth";
+import iconEmail from "./img/email_icon.svg";
+import iconPassword from "./img/lock.svg";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -56,7 +58,7 @@ const Login = () => {
           <form onSubmit={loginForm}>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconEmail} alt="Icon email" />
               </span>
               <input
                 value={email}
@@ -70,7 +72,7 @@ const Login = () => {
             </div>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconPassword} alt="Icon lock" />
               </span>
               <input
                 value={password}

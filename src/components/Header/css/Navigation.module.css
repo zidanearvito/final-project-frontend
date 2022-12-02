@@ -1,5 +1,5 @@
 .navItem {
-  margin-top: 5px;
+  margin-top: 6px;
   margin-right: 32px;
 }
 .navLink {
@@ -10,11 +10,23 @@
 }
 
 .navItem a:hover {
-  color: #2a5dc4;
+  color: #ffa500;
 }
 
 .logo img {
   margin-top: -15px;
   width: 150px;
   height: 50px;
+}
+@media (max-width: 777px) {
+  .navItem {
+    margin-top: 6px;
+    margin-right: 32px;
+  }
+  .navLink {
+    text-decoration: none;
+    font-style: normal;
+    font-size: 14px;
+    color: #000000;
+  }
 }

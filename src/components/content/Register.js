@@ -5,6 +5,9 @@ import Button from "../UI/Button";
 import classes from "./css/Register.module.css";
 import logo from "./img/logo.png";
 import { register } from "../../store/actions/auth";
+import iconUsername from "./img/userlogin.svg";
+import iconEmail from "./img/email_icon.svg";
+import iconPassword from "./img/lock.svg";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -76,7 +79,7 @@ const Register = () => {
           <form onSubmit={registForm}>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconUsername} alt="Icon user" />
               </span>
               <input
                 value={firstName}
@@ -89,7 +92,7 @@ const Register = () => {
             </div>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconUsername} alt="Icon user" />
               </span>
               <input
                 value={lastName}
@@ -101,7 +104,7 @@ const Register = () => {
             </div>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconEmail} alt="Icon email" />
               </span>
               <input
                 value={email}
@@ -115,7 +118,7 @@ const Register = () => {
             </div>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconPassword} alt="Icon lock" />
               </span>
               <input
                 value={password}
