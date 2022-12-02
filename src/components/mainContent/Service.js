@@ -15,10 +15,10 @@ const Service = () => {
           </div>
           <div className="col-md-6">
             <div className="serv-detail px-lg-4">
-              <h2>Get your ticket for any kind of trip in (Lokasimu)!</h2>
+              <h2>Dapatkan Tiket Anda Untuk Segala Jenis Penerbangan</h2>
               <p>
-                Pesan tiket pesawat sambil rebahan aja bersama let's flight
-                indonesia harga lebih murah dibandingkan yang lain, tanpa harus
+                Pesan tiket pesawat sambil rebahan aja bersama Let's Flight
+                Indonesia harga lebih murah dibandingkan yang lain, tanpa harus
                 beranjak dari tempat tidurmu, tiket pesawat sudah berada di
                 tanganmu.
               </p>
@@ -29,19 +29,15 @@ const Service = () => {
                 </p>
                 <p>
                   <img src={imgServChek} alt="" className={classes.check} />
-                  Sewa Mobil Lepas Kunci di Bali 24 Jam
+                  Pesan tiket dan rencanain liburan jadi gampang
                 </p>
                 <p>
                   <img src={imgServChek} alt="" className={classes.check} />
-                  Sewa Mobil Jangka Panjang Bulanan
+                  Banjir promo dan benefit, liburan jadi hemat!
                 </p>
                 <p>
                   <img src={imgServChek} alt="" className={classes.check} />
-                  Gratis Antar - Jemput Mobil di Bandara
-                </p>
-                <p>
-                  <img src={imgServChek} alt="" className={classes.check} />
-                  Layanan Airport Transfer / Drop In Out
+                  Pesan tiket pesawat bisa dimana aja
                 </p>
               </div>
             </div>

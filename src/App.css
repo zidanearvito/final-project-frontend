@@ -59,3 +59,12 @@ h5 {
 .bg-grey {
   background-color: #f6f9ff;
 }
+
+.btn-blue {
+  background-color: #2a5dc4;
+  color: #ffffff;
+}
+.btn-blue:hover {
+  background-color: blue;
+  color: #ffffff;
+}

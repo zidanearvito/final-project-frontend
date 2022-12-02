@@ -5,6 +5,9 @@ import Button from "../UI/Button";
 import classes from "./css/Register.module.css";
 import logo from "./img/logo.png";
 import { register } from "../../store/actions/auth";
+import iconUsername from "./img/userlogin.svg";
+import iconEmail from "./img/email_icon.svg";
+import iconPassword from "./img/lock.svg";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -14,6 +17,9 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("Error");
 
   const handleFirstName = (event) => {
     setFirstName(event.target.value);
@@ -31,7 +37,7 @@ const Register = () => {
     setPassword(event.target.value);
   };
 
-  const registForm = (event) => {
+  const registForm = async (event) => {
     event.preventDefault();
 
     const data = {
@@ -41,7 +47,16 @@ const Register = () => {
       password,
     };
 
-    dispatch(register(data, history));
+    const res = await dispatch(register(data, history))
+      .then((response) => ({ response }))
+      .catch((error) => ({ error }));
+
+    console.log(res.error);
+
+    if (res.error) {
+      setError(true);
+      setErrorMessage(res.error.response.data.message);
+    }
   };
 
   return (
@@ -53,11 +68,18 @@ const Register = () => {
           </div>
           <h5 className={classes.textJoin}>Join Us!</h5>
           <p className={classes.textCreate}>Create your account</p>
+          {error && (
+            <div className={classes.errMessage}>
+              <div class="alert alert-danger" role="alert">
+                {errorMessage}
+              </div>
+            </div>
+          )}
 
           <form onSubmit={registForm}>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconUsername} alt="Icon user" />
               </span>
               <input
                 value={firstName}
@@ -70,7 +92,7 @@ const Register = () => {
             </div>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconUsername} alt="Icon user" />
               </span>
               <input
                 value={lastName}
@@ -82,7 +104,7 @@ const Register = () => {
             </div>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconEmail} alt="Icon email" />
               </span>
               <input
                 value={email}
@@ -96,7 +118,7 @@ const Register = () => {
             </div>
             <div className="input-group mb-3 px-5">
               <span className="input-group-text">
-                <img src="" alt="" />
+                <img src={iconPassword} alt="Icon lock" />
               </span>
               <input
                 value={password}

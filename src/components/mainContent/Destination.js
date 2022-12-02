@@ -10,7 +10,7 @@ const Destination = () => {
   return (
     <section className="container-fluid bg-grey" id="destination">
       <div className="row">
-        <div className="col-12 text-center mt-5">
+        <div className="col-12 text-center mt-5 top">
           <h1 className="mb-1">Destination</h1>
           <p>Berbagai destinasi wisata yang wajib anda kunjungi</p>
         </div>

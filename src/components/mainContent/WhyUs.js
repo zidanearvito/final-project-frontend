@@ -26,8 +26,8 @@ const WhyUs = () => {
                 />
                 <h5 className="mt-3">Pesawat Lengkap</h5>
                 <p className="mt-3">
-                  Tersedia banyak pilihan pesawat, kondisi bagus, bersih dan
-                  terawat
+                  Tersedia banyak pilihan maskapai yang membantu perjalanan anda
+                  jadi mudah
                 </p>
               </blockquote>
             </div>
