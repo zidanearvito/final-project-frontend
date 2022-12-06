@@ -4,7 +4,7 @@ import { LOGIN, REGISTER, LOGOUT } from '../types/index';
 export const login = (params, history) => async function (dispatch) {
   try {
     const response = await AuthService.login(params)
-    dispatch({ type: LOGIN, payload: response.data })
+    dispatch({ type: LOGIN, payload: response.data.data })
     history('/')
   } catch (error) {
     console.log(error)
@@ -15,7 +15,7 @@ export const login = (params, history) => async function (dispatch) {
 export const register = (params, history) => async function (dispatch) {
   try {
     const response = await AuthService.register(params)
-    dispatch({ type: REGISTER, payload: response.data })
+    dispatch({ type: REGISTER, payload: response.data.data })
     history('/')
   } catch (error) {
     console.log(error)

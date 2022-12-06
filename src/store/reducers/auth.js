@@ -1,9 +1,9 @@
 import { LOGIN, REGISTER, LOGOUT } from '../types/index';
 
 const initialState = {
-  data: window.localStorage.getItem('data') || {},
-  accessToken: window.localStorage.getItem('accessToken'),
-  isLoggedIn: window.localStorage.getItem('data') ? true : false,
+  data: JSON.parse(localStorage.getItem('name')) || {},
+  accessToken: localStorage.getItem('accessToken'),
+  isLoggedIn: localStorage.getItem('name') ? true : false,
 }
 
 const authReducer = (state = initialState, action) => {
