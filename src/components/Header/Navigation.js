@@ -3,11 +3,13 @@ import classes from "./css/Navigation.module.css";
 import Button from "../UI/MainButton";
 import logo from "./img/logo1.png";
 import { logout } from "../../store/actions/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import user from "./img/icon_user.png";
 
 const Navigation = () => {
   const dispatch = useDispatch();
+  const userName = useSelector(state => state.authReducer)
+  console.log(userName)
 
   const token = window.localStorage.getItem("accessToken");
 
@@ -84,7 +86,7 @@ const Navigation = () => {
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false">
-                      Fullname{" "}
+                      {userName.data}{" "}
                     </a>
                     <ul className="dropdown-menu me-5">
                       <li>
@@ -102,8 +104,8 @@ const Navigation = () => {
                 </>
               ) : (
                 <li className="nav-item ms-2">
-                  <a href="/register">
-                    <Button>Register</Button>
+                  <a href="/login">
+                    <Button>Login</Button>
                   </a>
                 </li>
               )}
