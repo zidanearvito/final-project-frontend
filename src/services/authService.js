@@ -13,6 +13,18 @@ const AuthService = {
     }
   },
 
+  loginAdmin: async function (data) {
+    try {
+      const response = await API.post('/api/auth/login/admin', data);
+      API.defaults.headers['Authorization'] = `Bearer ${response.data.data.accessToken}`;
+      setHeadersAndStorage(response.data.data);
+      return response;
+    } catch (err) {
+      console.log('Auth service error', err);
+      throw err;
+    }
+  },
+
   register: async function (data) {
     try {
       const response = await API.post('/api/auth/register', data);
@@ -30,6 +42,7 @@ const AuthService = {
     API.defaults.headers['Authorization'] = '';
     localStorage.removeItem('name');
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('roleId');
   },
 
 //   updateProfile: async function (data) {
@@ -48,9 +61,10 @@ const AuthService = {
 
 }
 
-const setHeadersAndStorage = ({ name, accessToken }) => {
+const setHeadersAndStorage = ({ name, accessToken,roleId }) => {
   API.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
   localStorage.setItem('name', JSON.stringify(name));
+  localStorage.setItem('roleId', roleId)
   localStorage.setItem('accessToken', accessToken);
 }
 
