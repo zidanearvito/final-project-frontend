@@ -1,0 +1,95 @@
+.box {
+    width: 850px;
+    height: 601px;
+    display: flex;
+    border-radius: 26px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  }
+  
+  .leftBox {
+    width: 50%;
+    height: 100%;
+    border-radius: 26px;
+    background-color: #fff;
+  }
+  
+  .rightBox {
+    width: 50%;
+    height: 100%;
+    background-color: #2a5dc4;
+    border-top-right-radius: 26px;
+    border-bottom-right-radius: 26px;
+    position: relative;
+  }
+  
+  .rightBox img {
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 60px;
+    margin-top: 60px;
+  }
+  
+  .appTitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #2a5dc4;
+    padding-top: 140px;
+    padding-bottom: 24px;
+    text-align: center;
+  }
+  
+  .textJoin {
+    font-weight: 400;
+    font-size: 20px;
+    padding-left: 52px;
+  }
+  
+  .textCreate {
+    font-weight: 400;
+    font-size: 14px;
+    color: #999999;
+    padding-left: 52px;
+  }
+  
+  .login {
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+    padding-top: 10px;
+    text-align: center;
+  }
+  
+  .login a {
+    text-decoration: none;
+    margin-left: 4px;
+    color: #2a5dc4;
+  }
+  
+  .registTitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+    padding-bottom: 8px;
+    text-align: center;
+  }
+  
+  .registText {
+    font-weight: 400;
+    font-size: 12px;
+    padding-left: 65px;
+    padding-right: 65px;
+    color: #fff;
+    z-index: 10;
+    text-align: center;
+  }
+  
+  .errMessage {
+    margin-left: 50px;
+    width: 325px;
+    text-align: left;
+    justify-content: center;
+  }
+  
