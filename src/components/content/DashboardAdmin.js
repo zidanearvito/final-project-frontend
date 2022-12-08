@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Banner from "../Header/Banner";
+import DashboardContent from "../DashboardAdmin/Content/DashboardContent";
 
 const DashboardAdmin = () => {
   const history = useNavigate();
@@ -9,12 +9,12 @@ const DashboardAdmin = () => {
   useEffect(() => {
     if (roleId !== "1") {
       history("/");
-    };
+    }
   }, []);
 
-  console.log(useEffect)
+  console.log(useEffect);
 
-  return <Banner />;
+  return <DashboardContent />;
 };
 
 export default DashboardAdmin;

@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
-import DashboardAdmin from './components/content/DashboardAdmin';
-import LandingPage from './components/content/LandingPage';
-import Login from './components/content/Login';
-import LoginAdmin from './components/content/LoginAdmin';
-import Register from './components/content/Register';
+import "./App.css";
+import DashboardAdmin from "./components/content/DashboardAdmin";
+import LandingPage from "./components/content/LandingPage";
+import Login from "./components/content/Login";
+import LoginAdmin from "./components/content/LoginAdmin";
+import Register from "./components/content/Register";
 
 function App() {
   return (
