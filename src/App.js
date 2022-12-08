@@ -6,6 +6,7 @@ import LandingPage from "./components/content/LandingPage";
 import Login from "./components/content/Login";
 import LoginAdmin from "./components/content/LoginAdmin";
 import Register from "./components/content/Register";
+import Profile from "./components/Profile/Index";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/admin" element={<LoginAdmin />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
