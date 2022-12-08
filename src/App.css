@@ -6,7 +6,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: Helvetica;
-  background-color: #f6f9ff;
 }
 p {
   font-size: 14px;
@@ -59,12 +58,18 @@ h5 {
 .bg-grey {
   background-color: #f6f9ff;
 }
+.bg-blue {
+  background-color: #2a5dc4;
+}
 
 .btn-blue {
   background-color: #2a5dc4;
   color: #ffffff;
 }
 .btn-blue:hover {
-  background-color: blue;
+  background-color: #ffa500;
   color: #ffffff;
+}
+.bg-orange {
+  background-color: #ffa500;
 }

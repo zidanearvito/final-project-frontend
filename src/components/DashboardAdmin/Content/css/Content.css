@@ -1,0 +1,44 @@
+.small-box{
+    border-radius:.25rem;
+    box-shadow:0 0 1px rgba(0,0,0,.125),0 1px 3px rgba(0,0,0,.2);
+    display:block;
+    margin-bottom:20px;
+    position:relative
+}
+.small-box>.inner{
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 10px;
+}
+.small-box>.small-box-footer{
+    background-color:rgba(0,0,0,.1);
+    color:rgba(255,255,255,.8);
+    display:block;
+    padding:3px 0;
+    position:relative;
+    text-align:center;
+    text-decoration:none;
+    z-index:10
+}
+.small-box>.small-box-footer:hover{
+    background-color:rgba(0,0,0,.15);
+    color:#fff
+}
+.small-box h3{
+    font-size:2.2rem;
+    font-weight:700;
+    margin:0 0 10px;
+    padding:0;
+    white-space:nowrap;
+    color: white;
+}
+.small-box h5{
+    color: white;
+}
+
+img.icon{
+    width: 90px;
+    margin-left: 150px;
+    margin-top: -100px;
+    color: #2a5dc4;
+}
