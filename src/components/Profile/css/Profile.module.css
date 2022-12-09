@@ -1,0 +1,74 @@
+.box {
+    width: 850px;
+    height: 601px;
+    display: flex;
+    border-radius: 26px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  
+  .leftBox {
+    width: 40%;
+    height: 100%;
+    border-radius: 26px 0 0 26px;
+    background-color: #2a5dc4;
+  }
+  .leftBox img {
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 130px;
+    border-radius: 50%;
+  }
+
+  .icon i{
+    margin-left: 15px;
+    margin-right: auto;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #ffffff;
+  }
+  .icon i:hover{
+    color: #ffa500;
+  }
+  
+  .rightBox {
+    width: 60%;
+    height: 100%;
+    background-color: #ffffff;
+    border-top-right-radius: 26px;
+    border-bottom-right-radius: 26px;
+    position: relative;
+    padding: 10px;
+  }  
+
+  .textName {
+    font-weight: 400;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #f3ecec;
+  }
+  
+  .textEmail {
+    font-weight: 400;
+    font-size: 20px;
+    color: #f3ecec;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  
+  .profilTitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+    display: block;
+    margin-bottom: 30px;
+  }
+  

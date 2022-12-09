@@ -8,8 +8,8 @@ import user from "./img/icon_user.png";
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const userName = useSelector(state => state.authReducer)
-  console.log(userName)
+  const userName = useSelector((state) => state.authReducer);
+  console.log(userName);
 
   const token = window.localStorage.getItem("accessToken");
 
@@ -90,8 +90,8 @@ const Navigation = () => {
                     </a>
                     <ul className="dropdown-menu me-5">
                       <li>
-                        <a className="dropdown-item" href="/">
-                          Update profil
+                        <a className="dropdown-item" href="/profile">
+                          Update Profile
                         </a>
                       </li>
                       <li>
