@@ -1,10 +1,19 @@
-import { LOGIN, REGISTER, LOGOUT, LOGIN_ADMIN } from "../types/index";
+import {
+  LOGIN,
+  REGISTER,
+  LOGOUT,
+  LOGIN_ADMIN,
+  UPDATE_PROFILE,
+  GET_USER,
+} from "../types/index";
 
 const initialState = {
-  data: JSON.parse(localStorage.getItem("name")) || {},
+  data: localStorage.getItem("name") || {},
   accessToken: localStorage.getItem("accessToken"),
   roleId: localStorage.getItem("roleId"),
+  email: localStorage.getItem("email"),
   isLoggedIn: localStorage.getItem("name") ? true : false,
+  dataUser: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -14,7 +23,7 @@ const authReducer = (state = initialState, action) => {
     case LOGIN:
       return {
         ...state,
-        data: payload.data,
+        data: payload.name,
         accessToken: payload.accessToken,
         roleId: "",
         isLoggedIn: true,
@@ -30,7 +39,7 @@ const authReducer = (state = initialState, action) => {
     case REGISTER:
       return {
         ...state,
-        data: payload.data,
+        data: payload.name,
         accessToken: payload.accessToken,
         isLoggedIn: true,
       };
@@ -42,11 +51,16 @@ const authReducer = (state = initialState, action) => {
         roleId: "",
         isLoggedIn: false,
       };
-    // case UPDATE_PROFILE:
-    //   return {
-    //     ...state,
-    //     data: payload,
-    //   }
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        data: payload,
+      };
+    case GET_USER:
+      return {
+        ...state,
+        dataUser: payload,
+      };
     default: {
       return state;
     }

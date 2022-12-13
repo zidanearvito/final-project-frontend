@@ -3,10 +3,10 @@ import store from "../store";
 import { logout } from "../store/actions/auth";
 
 const API = axios.create({
-  baseURL: "https://lef-id.up.railway.app/",
+  baseURL: "https://lef-id.up.railway.app",
   headers: {
     Accept: "application/json",
-    Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+    Authorization: `Bearer ${localStorage.getItem("accessToken") || ""}`,
   },
 });
 

@@ -4,17 +4,15 @@ import DashboardContent from "../DashboardAdmin/Content/DashboardContent";
 
 const DashboardAdmin = () => {
   const history = useNavigate();
-  const token = localStorage.getItem("accessToken");
+  // const token = localStorage.getItem("accessToken");
   const roleId = localStorage.getItem("roleId");
   useEffect(() => {
     if (roleId !== "1") {
-      history("/");
+      return history("/");
     }
   }, []);
 
-  console.log(useEffect);
-
-  return <DashboardContent />;
+  return <>{roleId && <DashboardContent />}</>;
 };
 
 export default DashboardAdmin;

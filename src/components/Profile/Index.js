@@ -1,8 +1,98 @@
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import classes from "./css/Profile.module.css";
 import userIcon from "./img/icon_user.png";
 import Button from "../UI/Button";
+import { updateProfile, getUser } from "../../store/actions/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.authReducer.dataUser);
+  console.log(data);
+  const email = localStorage.getItem("email");
+  const [firstName, setfisrtName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [gender, setGender] = useState("gender");
+  const [address, setaddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [avatar, setAvatar] = useState(null);
+  // console.log(avatar)
+  // const [error, setError] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState("Error");
+
+  const history = useNavigate();
+
+  useLayoutEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
+  useEffect(() => {
+    setfisrtName(data.firstName);
+    setlastName(data.lastName);
+    setGender(data.gender);
+    setaddress(data.address);
+    setPhoneNumber(data.phoneNumber);
+    setAvatar(data.avatar);
+  }, [data]);
+
+  const handleFirstName = (event) => {
+    setfisrtName(event.target.value);
+  };
+
+  const handleLastName = (event) => {
+    setlastName(event.target.value);
+  };
+
+  const handleGender = (event) => {
+    setGender(event.target.value);
+  };
+
+  const handleAddress = (event) => {
+    setaddress(event.target.value);
+  };
+
+  const handlePhoneNumber = (event) => {
+    setPhoneNumber(event.target.value);
+  };
+
+  // const handleAvatar = (event) => {
+  //   setAvatar(event.target.files[0]);
+  //   // console.log(file)
+  // };
+
+  const updateForm = async (event) => {
+    event.preventDefault();
+    console.log(avatar);
+    // console.log(image)
+
+    const form = {
+      firstName,
+      lastName,
+      gender,
+      address,
+      phoneNumber,
+      image: avatar,
+    };
+    const formData = new FormData();
+
+    for (const key in form) {
+      formData.append(key, form[key]);
+    }
+
+    console.log(form);
+    const res = await dispatch(updateProfile(formData, history))
+      .then((response) => ({ response }))
+      .catch((error) => ({ error }));
+
+    console.log(res);
+
+    // if (res.error) {
+    //   setError(true);
+    //   setErrorMessage(res.error.response.data.message);
+    // }
+  };
+
+  // if(data) {
   return (
     <div className="wrapper d-flex justify-content-center position-relative bg-grey">
       <div className={classes.box}>
@@ -12,34 +102,51 @@ const Profile = () => {
               <i className="fa fa-arrow-circle-left"></i>
             </a>
           </div>
-          <img src={userIcon} alt="Icon" />
-          <h5 className={classes.textName}>FULLNAME</h5>
-          <p className={classes.textEmail}>Email</p>
+          {!avatar ? (
+            <img src={userIcon} alt="Icon" />
+          ) : (
+            <img src={data.avatar} alt="Icon" />
+          )}
+          <h5 className={classes.textName}>
+            {firstName} {lastName}
+          </h5>
+          <p className={classes.textEmail}>{email}</p>
         </div>
         <div className={classes.rightBox}>
           <div className={classes.profilTitle}>Profile Settings</div>
-          <form className="mt-2">
+          <form onSubmit={updateForm} encType="multipart/form" className="mt-2">
             <div className="row">
               <div className="col-lg-6">
                 <div className="mb-3">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                  >
                     Firstname
                   </label>
                   <input
                     type="text"
+                    value={firstName}
+                    onChange={handleFirstName}
                     className="form-control"
                     id="exampleFormControlInput1"
                     placeholder="firstname"
+                    required
                   />
                 </div>
               </div>
               <div className="col-lg-6">
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" className="form-label">
+                <div className="mb-3">
+                  <label
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                  >
                     Lastname
                   </label>
                   <input
                     type="text"
+                    value={lastName}
+                    onChange={handleLastName}
                     className="form-control"
                     id="exampleFormControlInput1"
                     placeholder="lastname"
@@ -48,21 +155,27 @@ const Profile = () => {
               </div>
             </div>
             <div className="mb-3">
-              <label for="exampleFormControlInput1" className="form-label">
-                Email address
+              <label htmlFor="exampleFormControlInput1" className="form-label">
+                Gender
               </label>
-              <input
-                type="email"
-                className="form-control"
-                id="exampleFormControlInput1"
-                placeholder="name@example.com"
-              />
+              <select
+                defaultValue={gender}
+                onChange={handleGender}
+                className="form-select form-select-md mb-3"
+                aria-label=".form-select-lg example"
+              >
+                <option> Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
             </div>
             <div className="mb-3">
-              <label for="exampleFormControlInput1" className="form-label">
+              <label htmlFor="exampleFormControlInput1" className="form-label">
                 Address
               </label>
               <input
+                value={address}
+                onChange={handleAddress}
                 type="text"
                 className="form-control"
                 id="exampleFormControlInput1"
@@ -70,10 +183,12 @@ const Profile = () => {
               />
             </div>
             <div className="mb-3">
-              <label for="exampleFormControlInput1" className="form-label">
+              <label htmlFor="exampleFormControlInput1" className="form-label">
                 Phone number
               </label>
               <input
+                value={phoneNumber}
+                onChange={handlePhoneNumber}
                 type="text"
                 className="form-control"
                 id="exampleFormControlInput1"
@@ -81,18 +196,20 @@ const Profile = () => {
               />
             </div>
             <div className="mb-3">
-              <label for="exampleFormControlInput1" className="form-label">
+              <label htmlFor="exampleFormControlInput1" className="form-label">
                 Photos
               </label>
               <input
+                // value={avatar}
+                onChange={(e) => setAvatar(e.target.files[0])}
                 type="file"
                 className="form-control"
                 id="exampleFormControlInput1"
                 placeholder="phone number"
               />
             </div>
-            <div className="text-center mt-5">
-              <Button>Save changes</Button>
+            <div className="text-center mt-3">
+              <Button type="submit">Save changes</Button>
             </div>
           </form>
         </div>
