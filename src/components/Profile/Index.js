@@ -2,6 +2,7 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import classes from "./css/Profile.module.css";
 import userIcon from "./img/icon_user.png";
 import Button from "../UI/Button";
+import Modal from "../UI/Modal";
 import { updateProfile, getUser } from "../../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.authReducer.dataUser);
-  console.log(data);
   const email = localStorage.getItem("email");
   const [firstName, setfisrtName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -17,9 +17,8 @@ const Profile = () => {
   const [address, setaddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [avatar, setAvatar] = useState(null);
-  // console.log(avatar)
-  // const [error, setError] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState("Error");
+  const [response, setResponse] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("Success");
 
   const history = useNavigate();
 
@@ -55,15 +54,12 @@ const Profile = () => {
     setPhoneNumber(event.target.value);
   };
 
-  // const handleAvatar = (event) => {
-  //   setAvatar(event.target.files[0]);
-  //   // console.log(file)
-  // };
+  const modalHandler = () => {
+    window.location.reload();
+  };
 
   const updateForm = async (event) => {
     event.preventDefault();
-    console.log(avatar);
-    // console.log(image)
 
     const form = {
       firstName,
@@ -79,22 +75,27 @@ const Profile = () => {
       formData.append(key, form[key]);
     }
 
-    console.log(form);
     const res = await dispatch(updateProfile(formData, history))
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
 
-    console.log(res);
+    // console.log(res.response);
 
-    // if (res.error) {
-    //   setError(true);
-    //   setErrorMessage(res.error.response.data.message);
-    // }
+    if (res.response) {
+      setResponse(true);
+      setResponseMessage(res.response.data.message);
+    }
   };
 
-  // if(data) {
   return (
     <div className="wrapper d-flex justify-content-center position-relative bg-grey">
+      {response && (
+        <Modal
+          title={responseMessage}
+          message={responseMessage}
+          onConfirm={modalHandler}
+        />
+      )}
       <div className={classes.box}>
         <div className={classes.leftBox}>
           <div className={classes.icon}>
@@ -200,7 +201,6 @@ const Profile = () => {
                 Photos
               </label>
               <input
-                // value={avatar}
                 onChange={(e) => setAvatar(e.target.files[0])}
                 type="file"
                 className="form-control"
