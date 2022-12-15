@@ -61,6 +61,7 @@ export const updateProfile = (params, history) =>
       const response = await AuthService.updateProfile(params);
       dispatch({ type: UPDATE_PROFILE, payload: response.data.data });
       // history("/profile");
+      return response
     } catch (error) {
       console.log(error);
       throw error;
