@@ -12,16 +12,15 @@ import {
   updateAirport,
   deleteAirport,
 } from "../../../../store/actions/airport";
-import Button from "../../../UI/Button";
 import LoadPage from "../../../UI/LoadPage";
 
 const DashboardAirport = () => {
   const dispatch = useDispatch();
-  const { data, dataById } = useSelector((state) => state.airportReducer);
+  const { data, dataById, loading } = useSelector((state) => state.airportReducer);
   const [airportName, setAirportName] = useState("");
   const [city, setCity] = useState("");
   const [cityCode, setCityCode] = useState("");
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     dispatch(getAirport());
@@ -42,9 +41,9 @@ const DashboardAirport = () => {
     setCityCode(event.target.value);
   };
 
-  const modalHandler = () => {
-    window.location.reload();
-  };
+  // const modalHandler = () => {
+  //   window.location.reload();
+  // };
 
   const createAirportForm = async (event) => {
     event.preventDefault();
@@ -59,6 +58,7 @@ const DashboardAirport = () => {
       .catch((error) => ({ error }));
 
     console.log(res.error);
+    window.location.reload();
   };
 
   const getById = async (id) => {
@@ -83,6 +83,7 @@ const DashboardAirport = () => {
       .catch((error) => ({ error }));
 
     console.log(res.error);
+    window.location.reload();
   };
 
   const deleteById = async (id) => {
@@ -91,11 +92,12 @@ const DashboardAirport = () => {
       .catch((error) => ({ error }));
 
     console.log(res);
+    window.location.reload();
   };
 
-  setInterval(function () {
-    setLoading(false);
-  }, 700);
+  // setInterval(function () {
+  //   setLoading(false);
+  // }, 700);
 
   return (
     <>
@@ -245,9 +247,9 @@ const DashboardAirport = () => {
                       >
                         Close
                       </button>
-                      <Button type="submit" onClick={modalHandler}>
+                      <button type="submit" className="btn btn-blue">
                         Save changes
-                      </Button>
+                      </button>
                     </div>
                   </form>
                 </div>
@@ -338,9 +340,9 @@ const DashboardAirport = () => {
                       >
                         Close
                       </button>
-                      <Button type="submit" onClick={modalHandler}>
+                      <button type="submit" className="btn btn-blue">
                         Save changes
-                      </Button>
+                      </button>
                     </div>
                   </form>
                 </div>
