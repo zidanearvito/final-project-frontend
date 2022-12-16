@@ -9,6 +9,7 @@ import {
 const initialState = {
   data: [],
   dataById: false,
+  loading: true
 };
 
 const airportReducer = (state = initialState, action) => {
@@ -19,6 +20,7 @@ const airportReducer = (state = initialState, action) => {
       return {
         ...state,
         data: payload.data,
+        loading: false
       };
 
     case CREATE_AIRPORT:
