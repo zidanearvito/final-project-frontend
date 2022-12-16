@@ -1,14 +1,12 @@
 import React from "react";
 import { logout } from "../../../store/actions/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Button from "../../UI/MainButton";
 import "../css/Dashboard.css";
 import logo from "./img/logo1.png";
 
 const HeaderAdmin = () => {
   const dispatch = useDispatch();
-  const userName = useSelector((state) => state.authReducer);
-  console.log(userName);
 
   return (
     <header className="navbar fixed-top bg-blue flex-md-nowrap p-0 shadow">
@@ -22,7 +20,8 @@ const HeaderAdmin = () => {
         data-bs-target="#sidebarMenu"
         aria-controls="sidebarMenu"
         aria-expanded="false"
-        aria-label="Toggle navigation">
+        aria-label="Toggle navigation"
+      >
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="navbar-nav">

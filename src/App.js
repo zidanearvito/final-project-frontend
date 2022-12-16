@@ -2,15 +2,15 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import DashboardAdmin from "./components/content/DashboardAdmin";
+import Company from "./components/content/Company";
 import LandingPage from "./components/content/LandingPage";
 import Login from "./components/content/Login";
 import LoginAdmin from "./components/content/LoginAdmin";
-import Register from "./components/content/Register";
-import DashboardAirplane from "./components/DashboardAdmin/Content/airplane/DashboardAirplane";
-import DashboardAirport from "./components/DashboardAdmin/Content/airport/DashboardAirport";
-import DashboardCompany from "./components/DashboardAdmin/Content/company/DashboardCompany";
-import DashboardTicket from "./components/DashboardAdmin/Content/tickets/DashboardTicket";
+import Register from "./components/content/Register"; 
 import Profile from "./components/Profile/Index";
+import Airport from "./components/content/Airport";
+import Airplane from "./components/content/Airplane";
+import Ticket from "./components/content/Ticket";
 
 function App() {
   return (
@@ -18,19 +18,10 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/dashboard/admin" element={<DashboardAdmin />} />
-        <Route
-          path="/dashboard/admin/companies"
-          element={<DashboardCompany />}
-        />
-        <Route
-          path="/dashboard/admin/airports"
-          element={<DashboardAirport />}
-        />
-        <Route
-          path="/dashboard/admin/airplanes"
-          element={<DashboardAirplane />}
-        />
-        <Route path="/dashboard/admin/tickets" element={<DashboardTicket />} />
+        <Route path="/dashboard/admin/companies" element={<Company />} />
+        <Route path="/dashboard/admin/airports" element={<Airport />} />
+        <Route path="/dashboard/admin/airplanes" element={<Airplane />} />
+        <Route path="/dashboard/admin/tickets" element={<Ticket />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/admin" element={<LoginAdmin />} />
