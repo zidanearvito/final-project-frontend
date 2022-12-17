@@ -16,7 +16,9 @@ import LoadPage from "../../../UI/LoadPage";
 
 const DashboardAirport = () => {
   const dispatch = useDispatch();
-  const { data, dataById, loading } = useSelector((state) => state.airportReducer);
+  const { data, dataById, loading } = useSelector(
+    (state) => state.airportReducer
+  );
   const [airportName, setAirportName] = useState("");
   const [city, setCity] = useState("");
   const [cityCode, setCityCode] = useState("");
@@ -148,7 +150,7 @@ const DashboardAirport = () => {
                           <img src={editIcon} alt="icon" />
                         </button>
                         <button
-                        onClick={() => getById(airport.id)}
+                          onClick={() => getById(airport.id)}
                           type="button"
                           className="btn btn-blue btn-sm me-1"
                           data-bs-toggle="modal"
@@ -371,7 +373,6 @@ const DashboardAirport = () => {
                       <button
                         type="button"
                         className="btn btn-blue me-3 mt-2"
-                        data-bs-dismiss="modal"
                         onClick={() => deleteById(dataById.id)}
                       >
                         Yes

@@ -6,16 +6,19 @@ import airplaneIcon from "../Sidebar/img/airplane.svg";
 import ticketIcon from "../Sidebar/img/ticket.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getAirport } from "../../../store/actions/airport";
+import { getCompany } from "../../../store/actions/company";
 import LoadPage from "../../UI/LoadPage";
 
 const DashboardContent = () => {
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.airportReducer);
+  const dataAirport = useSelector((state) => state.airportReducer.data);
+  const dataCompany = useSelector((state) => state.companyReducer.data);
   const [loading, setLoading] = useState(true);
-  console.log(data);
+  console.log(dataAirport);
 
   useEffect(() => {
     dispatch(getAirport());
+    dispatch(getCompany())
   }, [dispatch]);
 
   setInterval(function () {
@@ -37,7 +40,7 @@ const DashboardContent = () => {
               <div className="col-lg-3 col-6">
                 <div className="small-box bg-orange">
                   <div className="inner">
-                    <h3>0</h3>
+                    <h3>{dataCompany.totalData}</h3>
 
                     <h5>Companies</h5>
                   </div>
@@ -53,7 +56,7 @@ const DashboardContent = () => {
               <div className="col-lg-3 col-6">
                 <div className="small-box bg-orange">
                   <div className="inner">
-                    <h3>{data.totalData}</h3>
+                    <h3>{dataAirport.totalData}</h3>
 
                     <h5>Airports</h5>
                   </div>
