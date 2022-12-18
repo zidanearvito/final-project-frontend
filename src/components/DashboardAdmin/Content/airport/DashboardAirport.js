@@ -133,7 +133,7 @@ const DashboardAirport = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.data.map((airport, no) => (
+                  {data.data?.map((airport, no) => (
                     <tr key={airport.id}>
                       <td>{no + 1}</td>
                       <td>{airport.airportName}</td>
