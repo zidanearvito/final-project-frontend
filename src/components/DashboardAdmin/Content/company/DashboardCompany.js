@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Dashboard from "../../Index";
 import editIcon from "../img/edit.svg";
 import deleteIcon from "../img/trash.svg";
-import detailIcon from "../img/eye.svg";
 import inputIcon from "../img/input.svg";
 import warning from "../img/warning.png";
 // import classes from "../css/Content.css";
@@ -32,7 +31,9 @@ const DashboardCompany = () => {
   const handleCompanyName = (event) => {
     setCompanyName(event.target.value);
   };
-
+  const addCompany = ()=>{
+    setCompanyName("")
+  }
   const createCompanyForm = async (event) => {
     event.preventDefault();
 
@@ -105,6 +106,7 @@ const DashboardCompany = () => {
               className="btn btn-blue btn-sm me-2 mb-3"
               data-bs-toggle="modal"
               data-bs-target="#addCompany"
+              onClick={addCompany}
             >
               <img src={inputIcon} alt="icon" />
               Add company
@@ -120,7 +122,7 @@ const DashboardCompany = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.data.map((company, no) => (
+                  {data.data?.map((company, no) => (
                     <tr key={company.id}>
                       <td>{no + 1}</td>
                       <td>
@@ -150,9 +152,6 @@ const DashboardCompany = () => {
                         >
                           <img src={deleteIcon} alt="icon" />
                         </button>
-                        <a href="/" className="btn btn-sm btn-blue">
-                          <img src={detailIcon} alt="Icon" />
-                        </a>
                       </td>
                     </tr>
                   ))}

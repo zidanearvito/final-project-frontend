@@ -4,7 +4,7 @@ const CompanyService = {
   getCompany: async function (data) {
     try {
       const response = await API.get("/api/company", data);
-      console.log(response)
+      // console.log(response)
       return response;
     } catch (error) {
       console.log(error);
