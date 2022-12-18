@@ -12,7 +12,7 @@ export const getCompany = (params, history) =>
     try {
       const response = await CompanyService.getCompany(params);
       dispatch({ type: GET_COMPANY, payload: response });
-      console.log(response)
+      // console.log(response)
     } catch (error) {
       console.log(error);
       throw error;
