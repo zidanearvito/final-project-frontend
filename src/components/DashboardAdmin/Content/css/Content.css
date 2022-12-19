@@ -47,3 +47,7 @@ img.icon{
     width: 90px;
     height: 30px;
 }
+.modal-body {
+    max-height: calc(80vh - 210px);
+    overflow-y: auto;
+  }
