@@ -10,7 +10,7 @@ const DashboardAdmin = () => {
     if (roleId !== "1") {
       return history("/");
     }
-  }, []);
+  }, [history, roleId]);
 
   return <>{roleId && <DashboardContent />}</>;
 };

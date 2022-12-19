@@ -603,7 +603,6 @@ const DashboardTicket = () => {
                           type="date"
                           className="form-control"
                           id="exampleFormControlInput1"
-                          required
                         />
                       </div>
                       <div className="mb-3">
@@ -635,7 +634,6 @@ const DashboardTicket = () => {
                           type="date"
                           className="form-control"
                           id="exampleFormControlInput1"
-                          required
                           />
                       </div>
                       <div className="mb-3">

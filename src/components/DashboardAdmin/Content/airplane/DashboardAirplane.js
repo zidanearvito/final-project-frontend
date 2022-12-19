@@ -25,14 +25,14 @@ const DashboardAirplane = () => {
   // console.log(dataComp);
   const [airplaneName, setAirplaneName] = useState("");
   const [airplaneCode, setAirplaneCode] = useState("");
-  const [companyName, setCompanyName] = useState("");
+  const [companyId, setCompanyId] = useState("");
 
   useEffect(() => {
     dispatch(getAirplane());
     dispatch(getCompany());
     setAirplaneName(dataById.airplaneName);
     setAirplaneCode(dataById.airplaneCode);
-    // setCompanyName(dataById.companyName);
+    setCompanyId(dataById.companyId);
   }, [dispatch, dataById]);
   // useEffect(() => {
   // }, [dispatch]);
@@ -43,8 +43,8 @@ const DashboardAirplane = () => {
   const handleAirplaneCode = (event) => {
     setAirplaneCode(event.target.value);
   };
-  const handleCompanyName = (event) => {
-    setCompanyName(event.target.value);
+  const handleCompanyId = (event) => {
+    setCompanyId(event.target.value);
   };
 
   const createAirplaneForm = async (event) => {
@@ -52,7 +52,7 @@ const DashboardAirplane = () => {
     const data = {
       airplaneName,
       airplaneCode,
-      companyName,
+      companyId,
     };
     const res = await dispatch(createAirplane(data))
       .then((response) => ({ response }))
@@ -77,7 +77,7 @@ const DashboardAirplane = () => {
     const data = {
       airplaneName,
       airplaneCode,
-      companyId: companyName,
+      companyId,
     };
     const res = await dispatch(updateAirplane(id, data))
       .then((response) => ({ response }))
@@ -226,15 +226,15 @@ const DashboardAirplane = () => {
                           Perusahaan
                         </label>
                         <select
-                          defaultValue={companyName}
-                          onChange={handleCompanyName}
+                          defaultValue={companyId}
+                          onChange={handleCompanyId}
                           className="form-select form-select-md mb-3"
                           aria-label=".form-select-lg example"
                           required
                         >
                           <option>Company</option>
                           {dataComp.data?.map((comp) => (
-                            <option value={comp.companyName} key={comp.id}>
+                            <option value={comp.id} key={comp.id}>
                               {comp.companyName}
                             </option>
                           ))}
@@ -249,7 +249,7 @@ const DashboardAirplane = () => {
                       >
                         Close
                       </button>
-                      {!airplaneName || !airplaneCode || !companyName ? (
+                      {!airplaneName || !airplaneCode || !companyId ? (
                         <button type="submit" className="btn btn-blue" disabled>
                           Save changes
                         </button>
@@ -328,8 +328,8 @@ const DashboardAirplane = () => {
                           Perusahaan
                         </label>
                         <select
-                          defaultValue={companyName}
-                          onChange={handleCompanyName}
+                          defaultValue={companyId}
+                          onChange={handleCompanyId}
                           className="form-select form-select-md mb-3"
                           aria-label=".form-select-lg example"
                           required

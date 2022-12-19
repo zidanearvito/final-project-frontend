@@ -10,7 +10,7 @@ const Airplane = () => {
     if (roleId !== "1") {
       return history("/");
     }
-  }, []);
+  }, [history, roleId]);
 
   return <>{roleId && <DashboardAirplane />}</>;
 };
