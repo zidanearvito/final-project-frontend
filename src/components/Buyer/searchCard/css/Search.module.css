@@ -1,0 +1,12 @@
+.card {
+  margin: 2rem auto;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  width: 1000px;
+  height: fit-content;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: white;
+  margin-top: -50px;
+
+  position: relative;
+}
