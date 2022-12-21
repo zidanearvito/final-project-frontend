@@ -18,7 +18,7 @@ const DashboardContent = () => {
   const dataAirplane = useSelector((state) => state.airplaneReducer.data);
   const dataTicket = useSelector((state) => state.ticketReducer.data);
   const [loading, setLoading] = useState(true);
-  console.log(dataTicket)
+  // console.log(dataTicket)
 
   useEffect(() => {
     dispatch(getAirport());
