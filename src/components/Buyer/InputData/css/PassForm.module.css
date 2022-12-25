@@ -1,0 +1,17 @@
+.card {
+  margin: 2rem auto;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: white;
+  margin-top: 100px;
+  position: relative;
+}
+
+.content {
+  border-color: rgb(223, 223, 223);
+  border-style: solid solid none;
+  border-width: 3px 0 0;
+  margin-bottom: 10px;
+}

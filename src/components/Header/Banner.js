@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../UI/MainButton";
 import classes from "./css/Banner.module.css";
-import logo from './img/logo2.png'
+import logo from "./img/logo2.png";
 
 const Banner = () => {
   return (
@@ -12,13 +12,15 @@ const Banner = () => {
             <div className={classes.bannerTitles}>
               <h1>Pesan Tiket Pesawat Sambil Rebahan Aja!</h1>
               <p>
-                Selamat datang di Let's Flight Indonesia. Kami adalah platform beli
-                tiket pesawat secara online tanpa harus ribet. Selalu siap melayani
-                kebutuhanmu untuk pesan tiket pesawat selama 24 jam.
+                Selamat datang di Let's Flight Indonesia. Kami adalah platform
+                beli tiket pesawat secara online tanpa harus ribet. Selalu siap
+                melayani kebutuhanmu untuk pesan tiket pesawat selama 24 jam.
               </p>
-              <Button>
-                Cari Tiket
-              </Button>
+              {window.location.pathname === "/" && (
+                <a href="/search">
+                  <Button>Cari Tiket</Button>
+                </a>
+              )}
             </div>
           </div>
           <div className="col-md-6">

@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import classes from "./css/Navigation.module.css";
 import Button from "../UI/MainButton";
 import logo from "./img/logo1.png";
 import { logout } from "../../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import user from "./img/icon_user.png";
+import { getUser } from "../../store/actions/auth";
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const userName = useSelector((state) => state.authReducer);
-  console.log(userName);
+  useEffect(() => {
+    dispatch(getUser())
+  }, [dispatch]);
+
+  const {data, dataUser} = useSelector((state) => state.authReducer);
+  // console.log(dataUser);
+  const ava = dataUser.avatar
+  // console.log(ava)
 
   const token = window.localStorage.getItem("accessToken");
 
@@ -70,14 +77,25 @@ const Navigation = () => {
               {token ? (
                 <>
                   <li className="nav-item">
-                    <img
-                      src={user}
-                      className="rounded-circle ms-auto"
-                      width="40px"
-                      height="40px"
-                      id="profile"
-                      alt="User"
-                    />
+                    {!ava ? (
+                      <img
+                        src={user}
+                        className="rounded-circle ms-auto"
+                        width="40px"
+                        height="40px"
+                        id="profile"
+                        alt="User"
+                      />
+                    ) : (
+                      <img
+                        src={dataUser.avatar}
+                        className="rounded-circle ms-auto"
+                        width="40px"
+                        height="40px"
+                        id="profile"
+                        alt="User"
+                      />
+                    )}
                   </li>
                   <li className="nav-item dropdown ms-1">
                     <a
@@ -86,12 +104,22 @@ const Navigation = () => {
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false">
-                      {userName.data}{" "}
+                      {data}{" "}
                     </a>
                     <ul className="dropdown-menu me-5">
+                    <li>
+                        <a className="dropdown-item" href="/">
+                          Home
+                        </a>
+                      </li>
                       <li>
                         <a className="dropdown-item" href="/profile">
                           Update Profile
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href="/history">
+                          History
                         </a>
                       </li>
                       <li>

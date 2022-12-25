@@ -12,7 +12,7 @@ export const getTicket = () =>
     try {
       const response = await TicketService.getTicket();
       dispatch({ type: GET_TICKET, payload: response });
-      console.log(response)
+      // console.log(response)
       return response;
     } catch (error) {
       console.log(error);
