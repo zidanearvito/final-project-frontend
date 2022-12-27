@@ -1,3 +1,11 @@
+.ticketTitle {
+  margin: 2rem auto;
+  width: fit-content;
+  padding: 1rem;
+  margin-top: -20px;
+  position: relative;
+}
+
 .card {
   margin: 2rem auto;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
@@ -5,8 +13,8 @@
   height: fit-content;
   border-radius: 14px;
   padding: 1rem;
+  margin-top: -3px;
   background-color: white;
-  margin-top: -10px;
   position: relative;
 }
 
@@ -51,4 +59,9 @@
   border-style: solid solid none;
   border-width: 3px 0 0;
   margin-top: -10px;
+}
+
+.logo img {
+  margin-top: 30px;
+  width: 100%;
 }

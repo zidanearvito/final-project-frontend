@@ -5,6 +5,7 @@ import {
   CREATE_TICKET,
   UPDATE_TICKET,
   DELETE_TICKET,
+  SEARCH_TICKET,
 } from "../types/index";
 
 export const getTicket = () =>
@@ -66,3 +67,15 @@ export const deleteTicket = (id) =>
       throw error;
     }
   };
+
+export const searchTicket = (data) =>
+  async function (dispatch) {
+    try {
+      const response = await TicketService.searchTicket(data);
+      dispatch({ type: SEARCH_TICKET, payload: response });
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };  

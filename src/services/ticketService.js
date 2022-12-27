@@ -52,6 +52,17 @@ const TicketService = {
       throw err;
     }
   },
+  searchTicket: async function (data) {
+    try {
+      const response = await API.get(`/api/ticket/search/`, {
+        params: {...data}
+      });
+      return response;
+    } catch (err) {
+      console.log("Ticket service error", err);
+      throw err;
+    }
+  },
 };
 
 export default TicketService;
