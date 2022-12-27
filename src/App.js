@@ -14,6 +14,7 @@ import Ticket from "./components/content/Ticket";
 import SearchIndex from "./components/Buyer/searchCard/SearchIndex";
 import InputIndex from "./components/Buyer/InputData/InputIndex";
 import HistoryIndex from "./components/Buyer/history/HistoryIndex";
+import ConfirmIndex from "./components/Buyer/paymentConfirmation/ConfirmIndex";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/search" element={<SearchIndex />} />
         <Route path="/inputData" element={<InputIndex />} />
         <Route path="/history" element={<HistoryIndex />} />
+        <Route path="/payment/confirmation" element={<ConfirmIndex />} />
       </Routes>
     </BrowserRouter>
   );
