@@ -3,6 +3,7 @@ import {
   DELETE_TICKET,
   GET_TICKET,
   GET_TICKET_ID,
+  SEARCH_TICKET,
   UPDATE_TICKET,
 } from "../types";
 
@@ -46,6 +47,12 @@ const ticketReducer = (state = initialState, action) => {
       return {
         ...state,
         dataById: payload.data,
+      };
+
+    case SEARCH_TICKET:
+      return {
+        ...state,
+        data: payload.data.data,
       };
     default:
       return state;
