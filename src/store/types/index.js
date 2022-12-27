@@ -29,4 +29,8 @@ export const CREATE_TICKET = "CREATE_TICKET"
 export const GET_TICKET_ID = "GET_TICKET_ID"
 export const UPDATE_TICKET = "UPDATE_TICKET"
 export const DELETE_TICKET = "DELETE_TICKET"
+export const SEARCH_TICKET = "SEARCH_TICKET"
+// transaction
+export const GET_TRANSACTION = "GET_TRANSACTION"
+export const GET_TRANSACTION_ID = "GET_TRANSACTION_ID"
 
