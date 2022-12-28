@@ -1,7 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "../css/PassForm.module.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createTransaction } from "../../../../store/actions/transaction";
 
 const PassForm = () => {
+  const { state } = useLocation();
+  console.log(state);
+  const dispatch = useDispatch();
+  const history = useNavigate();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [nik, setNik] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+
+  const handleFirstName = (event) => {
+    setFirstName(event.target.value);
+  };
+  const handleLastName = (event) => {
+    setLastName(event.target.value);
+  };
+  const handleNik = (event) => {
+    setNik(event.target.value);
+  };
+  const handleBirthDate = (event) => {
+    setBirthDate(event.target.value);
+  };
+
+  const addPassenger = async (event) => {
+    event.preventDefault();
+    const dataPass = {
+      ticketGo: state.ticketGo,
+      ticketBack: state.ticketBack,
+      tripId: state.typeTicket,
+      firstName,
+      lastName,
+      NIK: nik,
+      birthDate,
+    };
+    const res = await dispatch(createTransaction(dataPass))
+      .then((response) => ({ response }))
+      .catch((error) => ({ error }));
+
+    console.log(res.response.data.data.id);
+    // history("/payment/transaction")
+    history("/payment/confirmation", {
+      state: {
+        transId: res.response.data.data.id,
+      },
+    });
+  };
+
   return (
     <>
       <div className="container">
@@ -11,55 +60,70 @@ const PassForm = () => {
               <div className={classes.card}>
                 <h2>Input Data Penumpang</h2>
                 <div className={classes.content}>
-                  <form class="row g-3 mt-2">
+                  <form onSubmit={addPassenger} className="row g-3 mt-2">
                     <h5>Penumpang 1</h5>
-                    <div class="col-md-6">
-                      <label for="inputEmail4" class="form-label">
+                    <div className="col-md-6">
+                      <label htmlFor="inputEmail4" className="form-label">
                         First Name
                       </label>
                       <input
-                        type="email"
-                        class="form-control"
+                        value={firstName}
+                        onChange={handleFirstName}
+                        type="text"
+                        className="form-control"
                         id="inputEmail4"
                         placeholder="Fiqri"
                         required
                       />
                     </div>
-                    <div class="col-md-6">
-                      <label for="inputPassword4" class="form-label">
+                    <div className="col-md-6">
+                      <label htmlFor="inputPassword4" className="form-label">
                         Last Name
                       </label>
                       <input
+                        value={lastName}
+                        onChange={handleLastName}
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="inputPassword4"
                         placeholder="Nugroho"
                         required
                       />
                     </div>
-                    <div class="col-8">
-                      <label for="inputAddress" class="form-label">
+                    <div className="col-8">
+                      <label htmlFor="inputAddress" className="form-label">
                         Nomor Kependudukan
                       </label>
                       <input
+                        value={nik}
+                        onChange={handleNik}
                         type="number"
-                        class="form-control"
+                        className="form-control"
                         id="inputAddress"
                         placeholder="NIK/SIM"
                         required
                       />
                     </div>
-                    <div class="col-4">
-                      <label for="inputAddress2" class="form-label">
+                    <div className="col-4">
+                      <label htmlFor="inputAddress2" className="form-label">
                         Tanggal Lahir
                       </label>
                       <input
+                        value={birthDate}
+                        onChange={handleBirthDate}
                         type="date"
-                        class="form-control"
+                        className="form-control"
                         id="inputAddress2"
                         required
                       />
                     </div>
+                    <button
+                      className="btn rent"
+                      type="submit"
+                      // onClick={addPassenger}
+                    >
+                      Checkout
+                    </button>
                   </form>
                 </div>
               </div>
@@ -78,12 +142,13 @@ const PassForm = () => {
                     </span>
                     <div className="m-t-sm">
                       <div className="btn-group mt-3">
-                          <button
-                            className="btn rent"
-                            type="submit"
-                          >
-                            Checkout
-                          </button>
+                        {/* <button
+                          className="btn rent"
+                          type="submit"
+                          // onClick={addPassenger}
+                        >
+                          Checkout
+                        </button> */}
                       </div>
                     </div>
                   </div>

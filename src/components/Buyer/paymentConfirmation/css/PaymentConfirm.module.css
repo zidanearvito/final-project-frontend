@@ -77,3 +77,7 @@
   border-width: 3px 0 0;
   margin-top: -10px;
 }
+
+.logo img {
+  width: 100%;
+}

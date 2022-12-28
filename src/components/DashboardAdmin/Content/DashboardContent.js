@@ -4,12 +4,14 @@ import Dashboard from "../Index";
 import companyIcon from "../Sidebar/img/company.svg";
 import airplaneIcon from "../Sidebar/img/airplane.svg";
 import ticketIcon from "../Sidebar/img/ticket.svg";
+import detailIcon from "./img/eye.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getAirport } from "../../../store/actions/airport";
 import { getCompany } from "../../../store/actions/company";
 import { getAirplane } from "../../../store/actions/airplane";
 import LoadPage from "../../UI/LoadPage";
 import { getTicket } from "../../../store/actions/ticket";
+import { getTransaction } from "../../../store/actions/transaction";
 
 const DashboardContent = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,8 @@ const DashboardContent = () => {
   const dataCompany = useSelector((state) => state.companyReducer.data);
   const dataAirplane = useSelector((state) => state.airplaneReducer.data);
   const dataTicket = useSelector((state) => state.ticketReducer.data);
+  const dataTransaction = useSelector((state) => state.transactionReducer.data);
+  console.log(dataTransaction.data);
   const [loading, setLoading] = useState(true);
   // console.log(dataTicket)
 
@@ -25,6 +29,7 @@ const DashboardContent = () => {
     dispatch(getCompany());
     dispatch(getAirplane());
     dispatch(getTicket());
+    dispatch(getTransaction());
   }, [dispatch]);
 
   setInterval(function () {
@@ -115,21 +120,31 @@ const DashboardContent = () => {
               <table className="table table-striped table-sm text-center bg-white">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
+                    <th scope="col">No</th>
+                    <th scope="col">Buyer</th>
+                    <th scope="col">Type Trip</th>
+                    <th scope="col">Passenger</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1,001</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
-                  </tr>
+                  {dataTransaction.data?.map((transaction, no) => (
+                    <tr key={transaction.id}>
+                      <td>{no + 1}</td>
+                      <td>{transaction.user.email}</td>
+                      <td>{transaction.typeTrip.type}</td>
+                      <td>{transaction.passenger.firstName}</td>
+                      <td>{transaction.transactionCode}</td>
+                      <td>{transaction.totalPrice}</td>
+                      <td>
+                        <button type="button" className="btn btn-sm btn-blue">
+                          <img src={detailIcon} alt="Icon" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

@@ -33,4 +33,9 @@ export const SEARCH_TICKET = "SEARCH_TICKET"
 // transaction
 export const GET_TRANSACTION = "GET_TRANSACTION"
 export const GET_TRANSACTION_ID = "GET_TRANSACTION_ID"
+export const CREATE_TRANSACTION = "CREATE_TRANSACTION"
+// payment
+export const GET_PAYMENT = "GET_PAYMENT"
+export const PUT_PAYMENT = "PUT_PAYMENT"
+
 

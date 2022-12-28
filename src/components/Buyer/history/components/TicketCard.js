@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "../css/TicketCard.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import arrow from "../img/arrow.png";
+import { getTransactionUser } from "../../../../store/actions/transaction";
 
 const TicketCard = () => {
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.transactionReducer);
+  console.log(data)
+  useEffect(() => {
+    dispatch(getTransactionUser());
+  }, [dispatch]);
   return (
     <>
       <div className={classes.card}>

@@ -4,11 +4,15 @@ import airportReducer from "./airport";
 import companyReducer from "./company";
 import airplaneReducer from "./airplane";
 import ticketReducer from "./ticket";
+import transactionReducer from "./transaction";
+import paymentReducer from "./payment";
 
 export default combineReducers({
   authReducer,
   airportReducer,
   companyReducer,
   airplaneReducer,
-  ticketReducer
+  ticketReducer,
+  transactionReducer,
+  paymentReducer
 });
