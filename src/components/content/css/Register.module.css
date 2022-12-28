@@ -5,6 +5,65 @@
   border-radius: 26px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
+@media screen and (max-width: 460px){
+  .box{
+    width: 90%;
+    height: 100%;
+    border-radius: 30px;
+    
+  }
+  .leftBox {
+    width: 100%!important;
+    position: relative;
+    display: block;
+    margin-top: 150px;
+    border-radius: 30px 30px 30px 30px !important;
+  }
+  .rightBox {
+    width: 90%!important;
+    height: 250px!important;
+    display: block;
+    position: absolute!important;
+    border-radius: 30px 30px 0 0 !important;
+  }
+  .rightBox img {
+    width: 150px!important;
+    display: block;
+    margin-left: 110px!important;
+    margin-top: 0px!important;
+  }
+  .appTitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    padding-top: 50px;
+    margin-top: 10px;
+    padding-bottom: 24px;
+    text-align: center;
+  }
+  .registTitle {
+    font-weight: 400;
+    font-size: 20px;
+    display: block;
+    color: #ffffff;
+    text-align: center;
+  }
+  .registText {
+    font-weight: 400;
+    font-size: 12px;
+    display: block;
+    color: #ffffff;
+    text-align: center;
+  }
+  .errMessage {
+    width: 80%!important;
+    text-align: center!important;
+    display: block;
+    margin-left: auto!important;
+    margin-right: auto!important;
+  }
+
+}
 
 .leftBox {
   width: 50%;

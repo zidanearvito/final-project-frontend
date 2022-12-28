@@ -37,10 +37,13 @@ a:hover {
     padding-top: 60px;
   }
   .logoBanner img {
-    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 20px;
-    width: 100%;
-    margin-top: 10px;
+    width: 60%;
+    margin-top: -10px;
+    display: block;
+
   }
   .bannerTitles Button {
     margin-bottom: 30px;

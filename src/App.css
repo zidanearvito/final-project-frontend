@@ -38,6 +38,26 @@ h5 {
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
+  width: 120px;
+}
+.rent2 {
+  padding: 8px 12px;
+  background: #ffa500;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 20px;
+  width: 120px;
+}
+.rent3 {
+  padding: 8px 12px;
+  background: #ffa500;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  width: 120px;
 }
 
 
@@ -53,6 +73,35 @@ h5 {
   }
   div.col-3 {
     width: 100%;
+  }
+  div.col-6 {
+    width: 100%;
+  }
+  div.col-2 {
+    width: 100%;
+  }
+  div.col-4 {
+    width: 100%;
+  }
+  div.col-8 {
+    width: 100%;
+  }
+  div.col-9 {
+    width: 100%;
+  }
+  .rent2 {
+    display:block ;
+    background: #ffa500;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: -10px;
+    width: 120px;
+  }
+  .rent3 {
+    display:block ;
+    margin-top: 10%;
   }
 }
 .bg-grey {

@@ -5,6 +5,30 @@
     border-radius: 26px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   }
+  @media screen and (max-width: 960px) {
+    .Register_box__0bHTj{
+      width: 10px;
+      height: 10px;
+      display: block;
+      border-radius: 26px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    }
+    .leftBox {
+      width: 10%;
+      height: 100%;
+      border-radius: 26px;
+      background-color: #fff;
+    }
+  }
+  @media screen and (max-width: 460px){
+    .Register_box__0bHTj{
+      width: 10px;
+      height: 10px;
+      display: block;
+      border-radius: 26px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    }
+  }
   
   .leftBox {
     width: 50%;
@@ -92,4 +116,3 @@
     text-align: left;
     justify-content: center;
   }
-  

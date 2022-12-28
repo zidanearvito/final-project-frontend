@@ -7,7 +7,7 @@ import { getAirport } from "../../../../store/actions/airport";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const dataAirport = useSelector((state) => state.airportReducer.data)
+  const dataAirport = useSelector((state) => state.airportReducer.data);
   const [typeTrip, setTypeTrip] = useState("");
   const [originCity, setOriginCity] = useState("");
   const [destinationCity, setDestinationCity] = useState("");
@@ -37,9 +37,9 @@ const Search = () => {
     setReturnDate(event.target.value);
   };
 
-  const modalHandler = () =>{
-    setError(false)
-  }
+  const modalHandler = () => {
+    setError(false);
+  };
 
   const searchForm = async (event) => {
     event.preventDefault();
@@ -55,33 +55,32 @@ const Search = () => {
 
     console.log(res);
     if (res.error) {
-      setDepartureDate("")
-      setReturnDate("")
+      setDepartureDate("");
+      setReturnDate("");
       setError(true);
       setErrorMessage(res.error.response.data.message);
     }
   };
   return (
     <>
-    {error && (
+      {error && (
         <Modal
           title={errorMessage}
           message={errorMessage}
           onConfirm={modalHandler}
         />
       )}
-      
+
       <div id="search" className={classes.card}>
         <form className="row gx-3 gy-2 mx-3 align-items-center">
-          <div className="col-5">
+          <div className="col-6 dm">
             <label htmlFor="specificSizeSelect">Dari</label>
             <select
               onChange={handleOrigin}
               className="form-select"
               id="specificSizeSelect"
               value={originCity}
-              required
-            >
+              required>
               <option>Pilih Kota</option>
               {dataAirport.data?.map((airport) => (
                 <option value={airport.city} key={airport.id}>
@@ -91,15 +90,14 @@ const Search = () => {
             </select>
           </div>
 
-          <div className="col-5">
+          <div className="col-6 dm">
             <label htmlFor="specificSizeSelect">Tujuan</label>
             <select
               onChange={handleDestination}
               className="form-select"
               id="specificSizeSelect"
               value={destinationCity}
-              required
-            >
+              required>
               <option>Pilih Kota</option>
               {dataAirport.data?.map((airport) => (
                 <option value={airport.city} key={airport.id}>
@@ -107,18 +105,6 @@ const Search = () => {
                 </option>
               ))}
             </select>
-          </div>
-
-          <div className="col-2">
-            <div>
-              <button
-                className="btn btn-blue mt-3"
-                type="submit"
-                onClick={searchForm}
-              >
-                Cari Ticket
-              </button>
-            </div>
           </div>
 
           <div className="col-4">
@@ -127,8 +113,7 @@ const Search = () => {
               onChange={handleTypeTrip}
               className="form-select"
               id="specificSizeSelect"
-              value={typeTrip}
-            >
+              value={typeTrip}>
               <option value="1">One-Way</option>
               <option value="2">Round-Trip</option>
             </select>
@@ -159,6 +144,16 @@ const Search = () => {
               />
             </div>
           )}
+          <div className="col-2">
+            <div>
+              <button
+                className="btn btn-blue mt-3"
+                type="submit"
+                onClick={searchForm}>
+                Cari Ticket
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </>
