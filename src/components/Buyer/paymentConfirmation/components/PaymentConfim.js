@@ -127,7 +127,7 @@ const PaymentConfirm = () => {
             {/* ticket */}
 
             <div className="col-9 mt-3">
-              <div className={classes.cardUser}>
+              <div className={classes.cardUser2}>
                 <div className="p-2">
                   <h2>Ticket</h2>
                 </div>

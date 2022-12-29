@@ -81,7 +81,7 @@ const Search = () => {
 
       <div id="search" className={classes.card}>
         <form className="row gx-3 gy-2 mx-3 align-items-center">
-          <div className="col-5">
+          <div className="col-6 dm">
             <label htmlFor="specificSizeSelect">Dari</label>
             <select
               onChange={handleOrigin}
@@ -93,13 +93,13 @@ const Search = () => {
               <option>Pilih Kota</option>
               {dataAirport.data?.map((airport) => (
                 <option value={airport.city} key={airport.id}>
-                  {airport.city} [{airport.cityCode}]{airport.airportName}
+                  {airport.city}
                 </option>
               ))}
             </select>
           </div>
 
-          <div className="col-5">
+          <div className="col-6 dm">
             <label htmlFor="specificSizeSelect">Tujuan</label>
             <select
               onChange={handleDestination}
@@ -111,22 +111,10 @@ const Search = () => {
               <option>Pilih Kota</option>
               {dataAirport.data?.map((airport) => (
                 <option value={airport.city} key={airport.id}>
-                  {airport.city} [{airport.cityCode}]{airport.airportName}
+                  {airport.city}
                 </option>
               ))}
             </select>
-          </div>
-
-          <div className="col-2">
-            <div>
-              <button
-                className="btn btn-blue mt-3"
-                type="submit"
-                onClick={searchForm}
-              >
-                Cari Ticket
-              </button>
-            </div>
           </div>
 
           <div className="col-4">
@@ -167,6 +155,17 @@ const Search = () => {
               />
             </div>
           )}
+          <div className="col-2">
+            <div>
+              <button
+                className="btn btn-blue mt-3"
+                type="submit"
+                onClick={searchForm}
+              >
+                Cari Ticket
+              </button>
+            </div>
+          </div>
         </form>
       </div>
       {show && <LoadData />}
