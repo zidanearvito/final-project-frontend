@@ -122,7 +122,19 @@ h5 {
 .bg-blue {
   background-color: #2a5dc4;
 }
-
+.blue {
+  background-color: #2a5dc4;
+  color: #ffffff;
+}
+.btn-red {
+  margin-top: -8px;
+  background-color: #fff3cd;
+  color: #664d03;
+}
+.btn-red:hover {
+  background-color: #bb2d3b;
+  color: #ffffff;
+}
 .btn-blue {
   background-color: #2a5dc4;
   color: #ffffff;
