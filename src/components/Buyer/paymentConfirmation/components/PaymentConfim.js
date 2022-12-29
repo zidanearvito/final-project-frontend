@@ -6,6 +6,8 @@ import Modal from "../../../UI/Modal";
 import { addPayment, getPayment } from "../../../../store/actions/payment";
 import { getTransactionId } from "../../../../store/actions/transaction";
 import { useLocation, useNavigate } from "react-router-dom";
+import { hideLoader, showLoader } from "../../../../store/actions/loader";
+import LoadData from "../../../UI/LoadData";
 
 const PaymentConfirm = () => {
   const { state } = useLocation();
@@ -13,12 +15,16 @@ const PaymentConfirm = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
   const { payment } = useSelector((state) => state.paymentReducer);
-  const { dataById } = useSelector((state) => state.transactionReducer);
-  // console.log(dataById);
+  const { dataById, loading } = useSelector(
+    (state) => state.transactionReducer
+  );
+  console.log(loading);
   console.log(payment);
   useEffect(() => {
+    dispatch(showLoader());
     dispatch(getPayment());
     dispatch(getTransactionId(state.transId));
+    dispatch(hideLoader());
   }, [dispatch, state]);
 
   const [paymentId, setPaymentId] = useState();
@@ -61,6 +67,13 @@ const PaymentConfirm = () => {
           onConfirm={modalHandler}
         />
       )}
+      {!loading && (
+        <>
+          <div className={classes.loading}>
+            <LoadData />
+          </div>
+        </>
+      )}
       {dataById?.map((get) => (
         <div className="container mt-5" key={get.id}>
           <div className="row">
@@ -90,7 +103,8 @@ const PaymentConfirm = () => {
                     onChange={handlePayment}
                     className="form-select mt-2"
                     id="specificSizeSelect"
-                    value={paymentId}>
+                    value={paymentId}
+                  >
                     <option>Pilih Pembayaran</option>
                     {payment.data?.map((payment) => (
                       <option value={payment.id} key={payment.id}>
@@ -194,9 +208,10 @@ const PaymentConfirm = () => {
                         <h6 className="me-3">Total Harga : </h6>
                         <h5>Rp. {get.totalPrice}</h5>
                         <button
-                          className="ms-auto btn rent3"
+                          className="ms-auto btn rent"
                           onClick={createPayment}
-                          type="submit">
+                          type="submit"
+                        >
                           Checkout
                         </button>
                       </div>
