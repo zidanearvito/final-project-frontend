@@ -3,14 +3,16 @@ import {
   DELETE_TICKET,
   GET_TICKET,
   GET_TICKET_ID,
+  HIDE_LOADER,
   SEARCH_TICKET,
+  SHOW_LOADER,
   UPDATE_TICKET,
 } from "../types";
 
 const initialState = {
   data: [],
   dataById: [],
-  loading: true,
+  loading: false,
 };
 
 const ticketReducer = (state = initialState, action) => {
@@ -53,6 +55,18 @@ const ticketReducer = (state = initialState, action) => {
       return {
         ...state,
         data: payload.data.data,
+        loading:true
+      };
+
+    case SHOW_LOADER:
+      return {
+        ...state,
+        loading: true,
+      };
+    case HIDE_LOADER:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;
