@@ -38,7 +38,7 @@ const transactionReducer = (state = initialState, action) => {
     case FILTER_TRANSACTION:
       return {
         ...state,
-        data: payload.data.data,
+        data: payload.data,
         loading: false,
       };
 
