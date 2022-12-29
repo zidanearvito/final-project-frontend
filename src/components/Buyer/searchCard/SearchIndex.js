@@ -1,25 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Footer from "../../Footer/Footer";
 import Banner from "../../Header/Banner";
 import Navigation from "../../Header/Navigation";
 import CardData from "./components/CardData";
 import Search from "./components/Search";
 import Destination from "../../mainContent/Destination";
-import {  useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import LoadPage from "../../UI/LoadPage";
 
 const Index = () => {
-  const token = window.localStorage.getItem("accessToken");
-  const history = useNavigate();
   const { data } = useSelector((state) => state.ticketReducer);
-  useEffect(() => {
-    if (!token) {
-      history("/login");
-    }
-  }, [ history, token]);
+  const [load, setLoad] = useState(true);
+
+  setInterval(function () {
+    setLoad(false);
+  }, 700);
   return (
     <>
-      {token && (
+      {load ? (
+        <LoadPage />
+      ) : (
         <>
           <Navigation />
           <Banner />
