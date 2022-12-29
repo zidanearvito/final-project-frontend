@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Navigation from "../../Header/Navigation";
 import PassForm from "./components/PassForm";
+import LoadPage from "../../UI/LoadPage";
 
 const InputIndex = () => {
+  const [load, setLoad] = useState(true);
+  setInterval(function () {
+    setLoad(false);
+  }, 700);
   return (
     <>
-      <Navigation />
-      <PassForm />
+      {load ? (
+        <LoadPage />
+      ) : (
+        <>
+          <Navigation />
+          <PassForm />
+        </>
+      )}
     </>
   );
 };
