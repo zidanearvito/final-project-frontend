@@ -11,7 +11,7 @@ import LoadData from "../../../UI/LoadData";
 
 const PaymentConfirm = () => {
   const { state } = useLocation();
-  console.log(state);
+  // console.log(state);
   const dispatch = useDispatch();
   const history = useNavigate();
   const { payment } = useSelector((state) => state.paymentReducer);
@@ -21,10 +21,10 @@ const PaymentConfirm = () => {
   console.log(loading);
   console.log(payment);
   useEffect(() => {
-    dispatch(showLoader());
+    dispatch(hideLoader());
     dispatch(getPayment());
     dispatch(getTransactionId(state.transId));
-    dispatch(hideLoader());
+    dispatch(showLoader());
   }, [dispatch, state]);
 
   const [paymentId, setPaymentId] = useState();
@@ -67,7 +67,7 @@ const PaymentConfirm = () => {
           onConfirm={modalHandler}
         />
       )}
-      {!loading && (
+      {loading && (
         <>
           <div className={classes.loading}>
             <LoadData />
