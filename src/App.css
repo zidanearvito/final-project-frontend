@@ -103,6 +103,18 @@ h5 {
     display:block ;
     margin-top: 10%;
   }
+  .offcanvas.offcanvas-end.show{
+    width: 60%;
+  }
+  a.nav-link.dropdown-toggle.text-white.ms-auto{
+    color: black!important;
+  }
+  .nav-item{
+    margin-top: 2%!important;
+  }
+  .navbar-nav.ms-auto{
+    margin-top: 0px;
+  }
 }
 .bg-grey {
   background-color: white;
