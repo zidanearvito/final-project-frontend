@@ -38,4 +38,5 @@ export const CREATE_TRANSACTION = "CREATE_TRANSACTION"
 export const GET_PAYMENT = "GET_PAYMENT"
 export const PUT_PAYMENT = "PUT_PAYMENT"
 
-
+export const SHOW_LOADER = "SHOW_LOADER"
+export const HIDE_LOADER = "HIDE_LOADER"
