@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import classes from "../css/Search.module.css";
 import Modal from "../../../UI/Modal";
 import { searchTicket } from "../../../../store/actions/ticket";
+import { showLoader, hideLoader } from "../../../../store/actions/loader";
 import { getAirport } from "../../../../store/actions/airport";
+import LoadData from "../../../UI/LoadData";
 
 const Search = () => {
   const dispatch = useDispatch();
   const dataAirport = useSelector((state) => state.airportReducer.data);
+  const show = useSelector((state) => state.ticketReducer.loading);
+  console.log(show);
   const [typeTrip, setTypeTrip] = useState("");
   const [originCity, setOriginCity] = useState("");
   const [destinationCity, setDestinationCity] = useState("");
@@ -43,6 +47,7 @@ const Search = () => {
 
   const searchForm = async (event) => {
     event.preventDefault();
+    dispatch(showLoader());
     const data = {
       originCity,
       destinationCity,
@@ -52,6 +57,9 @@ const Search = () => {
     const res = await dispatch(searchTicket(data))
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
+
+    dispatch(hideLoader());
+    console.log(show);
 
     console.log(res);
     if (res.error) {
@@ -73,38 +81,52 @@ const Search = () => {
 
       <div id="search" className={classes.card}>
         <form className="row gx-3 gy-2 mx-3 align-items-center">
-          <div className="col-6 dm">
+          <div className="col-5">
             <label htmlFor="specificSizeSelect">Dari</label>
             <select
               onChange={handleOrigin}
               className="form-select"
               id="specificSizeSelect"
               value={originCity}
-              required>
+              required
+            >
               <option>Pilih Kota</option>
               {dataAirport.data?.map((airport) => (
                 <option value={airport.city} key={airport.id}>
-                  {airport.city}
+                  {airport.city} [{airport.cityCode}]{airport.airportName}
                 </option>
               ))}
             </select>
           </div>
 
-          <div className="col-6 dm">
+          <div className="col-5">
             <label htmlFor="specificSizeSelect">Tujuan</label>
             <select
               onChange={handleDestination}
               className="form-select"
               id="specificSizeSelect"
               value={destinationCity}
-              required>
+              required
+            >
               <option>Pilih Kota</option>
               {dataAirport.data?.map((airport) => (
                 <option value={airport.city} key={airport.id}>
-                  {airport.city}
+                  {airport.city} [{airport.cityCode}]{airport.airportName}
                 </option>
               ))}
             </select>
+          </div>
+
+          <div className="col-2">
+            <div>
+              <button
+                className="btn btn-blue mt-3"
+                type="submit"
+                onClick={searchForm}
+              >
+                Cari Ticket
+              </button>
+            </div>
           </div>
 
           <div className="col-4">
@@ -113,7 +135,8 @@ const Search = () => {
               onChange={handleTypeTrip}
               className="form-select"
               id="specificSizeSelect"
-              value={typeTrip}>
+              value={typeTrip}
+            >
               <option value="1">One-Way</option>
               <option value="2">Round-Trip</option>
             </select>
@@ -144,18 +167,9 @@ const Search = () => {
               />
             </div>
           )}
-          <div className="col-2">
-            <div>
-              <button
-                className="btn btn-blue mt-3"
-                type="submit"
-                onClick={searchForm}>
-                Cari Ticket
-              </button>
-            </div>
-          </div>
         </form>
       </div>
+      {show && <LoadData />}
     </>
   );
 };
