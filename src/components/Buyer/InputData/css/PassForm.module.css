@@ -7,6 +7,18 @@
   background-color: white;
   margin-top: 100px;
   position: relative;
+  height: 310px;
+}
+.card2 {
+  margin: 2rem auto;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: white;
+  margin-top: 100px;
+  position: relative;
+  height: 310px;
 }
 
 .content {
@@ -14,4 +26,14 @@
   border-style: solid solid none;
   border-width: 3px 0 0;
   margin-bottom: 10px;
+}
+
+@media (max-width: 777px) {
+  .card{
+    height: 80%;
+  }
+  .card2{
+    margin-top: -10px;
+    height: 80%;
+  }
 }

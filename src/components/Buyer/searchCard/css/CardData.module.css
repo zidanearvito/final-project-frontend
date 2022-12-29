@@ -65,3 +65,20 @@
   margin-top: 30px;
   width: 100%;
 }
+@media (max-width: 777px) {
+  .card {
+    margin: 2rem auto;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: fit-content;
+    border-radius: 14px;
+    padding: 1rem;
+    margin-top: -3px;
+    background-color: white;
+    position: relative;
+  }
+  .arrow img {
+    width: 40px;
+    margin-top: -10px;
+  }
+}

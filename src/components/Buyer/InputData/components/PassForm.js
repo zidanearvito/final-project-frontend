@@ -90,7 +90,7 @@ const PassForm = () => {
                         required
                       />
                     </div>
-                    <div className="col-8">
+                    <div className="col-6">
                       <label htmlFor="inputAddress" className="form-label">
                         Nomor Kependudukan
                       </label>
@@ -117,20 +117,22 @@ const PassForm = () => {
                         required
                       />
                     </div>
-                    <button
-                      className="btn rent"
-                      type="submit"
-                      // onClick={addPassenger}
-                    >
-                      Checkout
-                    </button>
+                    <div className="col-2 mt-4">
+                      <button
+                        className="btn rent2"
+                        type="submit"
+                        // onClick={addPassenger}
+                      >
+                        Checkout
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>
             </div>
 
             <div className="col-md-3">
-              <div className={classes.card}>
+              <div className={classes.card2}>
                 <h2>Harga</h2>
                 <div className={classes.content}>
                   <div className="mt-3">

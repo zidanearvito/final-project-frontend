@@ -1,12 +1,17 @@
 .card {
   margin: 2rem auto;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-  width: 1000px;
+  width: 80%;
   height: fit-content;
   border-radius: 8px;
   padding: 1rem;
   background-color: white;
-  margin-top: -50px;
-
+  margin-top: -75px;
   position: relative;
+}
+@media screen and (max-width: 460px){
+  .card{
+    width: 90%!important;
+    margin-top: -75px;
+  }
 }

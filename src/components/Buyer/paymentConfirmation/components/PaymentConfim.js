@@ -11,11 +11,11 @@ const PaymentConfirm = () => {
   const { state } = useLocation();
   console.log(state);
   const dispatch = useDispatch();
-  const history = useNavigate()
+  const history = useNavigate();
   const { payment } = useSelector((state) => state.paymentReducer);
   const { dataById } = useSelector((state) => state.transactionReducer);
   // console.log(dataById);
-  console.log(payment)
+  console.log(payment);
   useEffect(() => {
     dispatch(getPayment());
     dispatch(getTransactionId(state.transId));
@@ -47,14 +47,14 @@ const PaymentConfirm = () => {
     console.log(res);
     if (res.response) {
       setResponse(true);
-      setResponseTitle(res.response.data.message)
-      setResponseMessage({message: "Pembayaran anda akan kami proses :)"});
+      setResponseTitle(res.response.data.message);
+      setResponseMessage({ message: "Pembayaran anda akan kami proses :)" });
     }
   };
 
   return (
     <>
-    {response && (
+      {response && (
         <Modal
           title={responseTitle}
           message={responseMessage.message}
@@ -90,8 +90,7 @@ const PaymentConfirm = () => {
                     onChange={handlePayment}
                     className="form-select mt-2"
                     id="specificSizeSelect"
-                    value={paymentId}
-                  >
+                    value={paymentId}>
                     <option>Pilih Pembayaran</option>
                     {payment.data?.map((payment) => (
                       <option value={payment.id} key={payment.id}>
@@ -114,7 +113,7 @@ const PaymentConfirm = () => {
             {/* ticket */}
 
             <div className="col-9 mt-3">
-              <div className={classes.cardUser}>
+              <div className={classes.cardUser2}>
                 <div className="p-2">
                   <h2>Ticket</h2>
                 </div>
@@ -155,11 +154,16 @@ const PaymentConfirm = () => {
                         <>
                           <div className="col-1">
                             <div className={classes.logo}>
-                              <img src={get.back.airplane.company.companyImage} alt="Logo" />
+                              <img
+                                src={get.back.airplane.company.companyImage}
+                                alt="Logo"
+                              />
                             </div>
                           </div>
                           <div className="col-3">
-                            <p className="mb-1">{get.back.origin.airportName}</p>
+                            <p className="mb-1">
+                              {get.back.origin.airportName}
+                            </p>
                             <h5 className="mb-1">{get.back.departureTime}</h5>
                             <p>{get.back.origin.cityCode}</p>
                           </div>
@@ -169,7 +173,9 @@ const PaymentConfirm = () => {
                             </div>
                           </div>
                           <div className="col-3">
-                            <p className="mb-1">{get.back.destination.airportName}</p>
+                            <p className="mb-1">
+                              {get.back.destination.airportName}
+                            </p>
                             <h5 className="mb-1">{get.back.arrivalTime}</h5>
                             <p>{get.back.destination.cityCode}</p>
                           </div>
@@ -188,10 +194,9 @@ const PaymentConfirm = () => {
                         <h6 className="me-3">Total Harga : </h6>
                         <h5>Rp. {get.totalPrice}</h5>
                         <button
-                          className="ms-auto btn rent"
+                          className="ms-auto btn rent3"
                           onClick={createPayment}
-                          type="submit"
-                        >
+                          type="submit">
                           Checkout
                         </button>
                       </div>

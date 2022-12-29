@@ -62,8 +62,6 @@
     text-align: center;
     margin-top: 10px;
   }
-  
-  
   .profilTitle {
     font-weight: 400;
     font-size: 20px;
@@ -72,5 +70,46 @@
     display: block;
     margin-bottom: 30px;
     margin-top: 20px;
+  }
+  @media (max-width: 777px) {
+    .box{
+      width: 90%;
+      height: 100%;
+      border-radius: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    }
+    .leftBox {
+      width: 90%;
+      height: 250px;
+      position: absolute;
+      border-radius: 26px 26px 0 0;
+      background-color: #2a5dc4;
+    }
+    .leftBox img {
+      width: 100px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 50%;
+      margin-top: 5%;
+    }
+    .rightBox {
+      width: 90%;
+      height: 100%;
+      position: relative;
+      padding: 10px;
+      border-radius: 0 0 26px 26px;
+      margin-top: 70%;
+    } 
+    .profilTitle {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 30px;
+      color: #ffffff;
+      display: block;
+      margin-bottom: 230px;
+      margin-top: -84.5%;
+      margin-left: 20px;
+    }
   }
   
