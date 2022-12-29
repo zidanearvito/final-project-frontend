@@ -48,6 +48,26 @@ const TransactionService = {
       throw error;
     }
   },
+  cancelTransaction: async function (id) {
+    try {
+      const response = await API.put(`/api/transaction/cancel/${id}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+  filterTransaction: async function (data) {
+    try {
+      const response = await API.get(`/api/transaction/filter/`, {
+        params: {...data}
+      });
+      return response;
+    } catch (err) {
+      console.log("Ticket service error", err);
+      throw err;
+    }
+  },
 };
 
 export default TransactionService;

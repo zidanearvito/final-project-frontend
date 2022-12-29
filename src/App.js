@@ -6,7 +6,7 @@ import Company from "./components/content/Company";
 import LandingPage from "./components/content/LandingPage";
 import Login from "./components/content/Login";
 import LoginAdmin from "./components/content/LoginAdmin";
-import Register from "./components/content/Register"; 
+import Register from "./components/content/Register";
 import Profile from "./components/Profile/Index";
 import Airport from "./components/content/Airport";
 import Airplane from "./components/content/Airplane";
@@ -15,6 +15,7 @@ import SearchIndex from "./components/Buyer/searchCard/SearchIndex";
 import InputIndex from "./components/Buyer/InputData/InputIndex";
 import HistoryIndex from "./components/Buyer/history/HistoryIndex";
 import ConfirmIndex from "./components/Buyer/paymentConfirmation/ConfirmIndex";
+import ProtectedUser from "./protectedUser/protectedUser";
 
 function App() {
   return (
@@ -29,11 +30,13 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/admin" element={<LoginAdmin />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/search" element={<SearchIndex />} />
-        <Route path="/inputData" element={<InputIndex />} />
-        <Route path="/history" element={<HistoryIndex />} />
-        <Route path="/payment/confirmation" element={<ConfirmIndex />} />
+        <Route element={<ProtectedUser />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/search" element={<SearchIndex />} />
+          <Route path="/inputData" element={<InputIndex />} />
+          <Route path="/history" element={<HistoryIndex />} />
+          <Route path="/payment/confirmation" element={<ConfirmIndex />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

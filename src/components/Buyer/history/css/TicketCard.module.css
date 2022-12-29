@@ -1,36 +1,23 @@
 .card {
     margin: 2rem auto;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-    width: 900px;
+    width: 100%;
     height: fit-content;
     border-radius: 14px;
     padding: 1rem;
     background-color: white;
-    margin-top: 100px;
     position: relative;
-    margin-bottom: -50px;
+    margin-top: -5px;
   }
   
-  .title {
+  /* .title {
     padding: 0.5rem;
     margin-left: 11px;
     display: flex;
-  }
-  
-  .title p {
-    margin-right: 15px;
-    padding: 10px;
-    width: fit-content;
-    height: fit-content;
-    background-color: #fff3cd;
-    border-color: #ffecb5;
-    border-radius: 12px;
-    color: #664d03;
-  }
+  } */
 
   .alertSuccess {
     margin-left: auto;
-    margin-right: 15px;
     padding: 10px;
     width: fit-content;
     height: fit-content;
@@ -38,6 +25,46 @@
     border-color: #d1e7dd;
     border-radius: 12px;
     color: #0f5132;
+    margin-bottom: 15px;
+  }
+
+  .alertPending {
+    margin-left: auto;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+    border-radius: 12px;
+    color: #664d03;
+    margin-bottom: 15px;
+  }
+
+  .alertCancel {
+    margin-left: auto;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    border-radius: 12px;
+    color: #842029;
+    margin-bottom: 15px;
+  }
+
+  .loading { 
+    margin-top: 200px;
+  }
+
+  .cancel {
+    margin-right: 15px;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: #f8d7da;
+    /* border-color: #f5c2c7; */
+    border-radius: 12px;
+    color: #842029;
   }
   
   .body {
@@ -66,6 +93,13 @@
     border-width: 3px 0 0;
     margin-top: -10px;
   }
+
+  .cardBody {
+    padding: 10px;
+    margin-top: 100px;
+    max-height: calc(115vh - 210px);
+    overflow-y: auto;
+  }
   @media (max-width: 777px){
     .card {
       width: 90%;
@@ -74,6 +108,12 @@
     .arrow img {
       width: 40px;
       margin-top: -5%;
+    }
+    .cardBody {
+      padding: 10px;
+      margin-top: 20px;
+      max-height: calc(115vh - 210px);
+      overflow-y: auto;
     }
   }
   
