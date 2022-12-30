@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import classes from "../css/PaymentConfirm.module.css";
 import arrow from "../img/arrow.png";
 import Modal from "../../../UI/Modal";
-import { addPayment, getPayment } from "../../../../store/actions/payment";
+import {
+  addPayment,
+  getPayment,
+  getPaymentId,
+} from "../../../../store/actions/payment";
 import { getTransactionId } from "../../../../store/actions/transaction";
 import { useLocation, useNavigate } from "react-router-dom";
 import { hideLoader, showLoader } from "../../../../store/actions/loader";
@@ -15,15 +19,15 @@ const PaymentConfirm = () => {
   // console.log(state);
   const dispatch = useDispatch();
   const history = useNavigate();
-  const { payment } = useSelector((state) => state.paymentReducer);
-  // console.log(payment);
+  const { payment, idPayment } = useSelector((state) => state.paymentReducer);
+  console.log(idPayment);
   const { dataById, loading } = useSelector(
     (state) => state.transactionReducer
   );
   console.log(loading);
   console.log(payment);
   const [paymentId, setPaymentId] = useState();
-  console.log(paymentId)
+  console.log(paymentId);
   const [response, setResponse] = useState(false);
   const [responseMessage, setResponseMessage] = useState("Success");
   const [responseTitle, setResponseTitle] = useState("Success");
@@ -31,10 +35,10 @@ const PaymentConfirm = () => {
   useEffect(() => {
     dispatch(hideLoader());
     dispatch(getPayment());
+    dispatch(getPaymentId(paymentId));
     dispatch(getTransactionId(state.transId));
     dispatch(showLoader());
-  }, [dispatch, state]);
-
+  }, [dispatch, state, paymentId]);
 
   const handlePayment = (event) => {
     setPaymentId(event.target.value);
@@ -42,6 +46,10 @@ const PaymentConfirm = () => {
   const modalHandler = () => {
     history("/");
   };
+
+  // const getIdPayment = async(id) => {
+  //   await dispatch(getPaymentId(id))
+  // }
 
   const createPayment = async (event) => {
     event.preventDefault();
@@ -118,7 +126,15 @@ const PaymentConfirm = () => {
                   </select>
                 </div>
               </div>
-              {paymentId && <PaymenentAlert bankName={payment.bankName} />}
+              {paymentId && (
+                <PaymenentAlert
+                  logo={idPayment.bankLogo}
+                  bankName={idPayment.bankName}
+                  price={new Intl.NumberFormat().format(get.totalPrice)}
+                  number={idPayment.accountNumber}
+                  name={idPayment.accountName}
+                />
+              )}
             </div>
 
             {/* ticket */}
