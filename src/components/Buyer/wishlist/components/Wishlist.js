@@ -92,7 +92,7 @@ const Wishlist = () => {
                     className="btn rent"
                     onClick={() => showModal(setId(wish.id))}
                   >
-                    Pilih Ticket
+                    Hapus
                   </button>
                 </div>
               </div>

@@ -138,7 +138,7 @@ const CardData = () => {
                 <p>{ticket.class}</p>
                 <button
                   className="btn btn-wish ms-auto"
-                  // onClick={() => ticketHandler(ticket.id)}
+                  onClick={() => wishHandler(ticket.id)}
                 >
                   <img src={save} alt="" />
                 </button>
