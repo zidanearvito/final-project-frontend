@@ -90,19 +90,19 @@ const TicketCard = () => {
             <ul className="list-group mt-5 pt-2 text-center">
               <li className="list-group-item blue">Filter</li>
               <button
-                className="list-group-item btn btn-dark"
+                className="list-group-item btn btn-dark btn-filt"
                 onClick={filterSuccess}
               >
                 Success
               </button>
               <button
-                className="list-group-item btn btn-dark"
+                className="list-group-item btn btn-dark btn-filt"
                 onClick={filterCancel}
               >
                 Cancelled
               </button>
               <button
-                className="list-group-item btn btn-dark"
+                className="list-group-item btn btn-dark btn-filt"
                 onClick={filterPending}
               >
                 Pending

@@ -35,21 +35,22 @@ const PaymentConfirm = () => {
   useEffect(() => {
     dispatch(hideLoader());
     dispatch(getPayment());
-    dispatch(getPaymentId(paymentId));
+    // dispatch(getPaymentId(paymentId));
     dispatch(getTransactionId(state.transId));
     dispatch(showLoader());
-  }, [dispatch, state, paymentId]);
+  }, [dispatch, state]);
 
-  const handlePayment = (event) => {
-    setPaymentId(event.target.value);
-  };
+  // const handlePayment = (event) => {
+  //   setPaymentId(event.target.value);
+  // };
   const modalHandler = () => {
     history("/");
   };
 
-  // const getIdPayment = async(id) => {
-  //   await dispatch(getPaymentId(id))
-  // }
+  const getIdPayment = async (id) => {
+    setPaymentId(id);
+    await dispatch(getPaymentId(id));
+  };
 
   const createPayment = async (event) => {
     event.preventDefault();
@@ -111,30 +112,22 @@ const PaymentConfirm = () => {
                     <h5 className="me-2">Tgl-Lahir : </h5>
                     <p>{get.passenger.brithDate.split("T")[0]}</p>
                   </div>
-                  <select
-                    onChange={handlePayment}
-                    className="form-select mt-2"
-                    id="specificSizeSelect"
-                    value={paymentId}
-                  >
-                    <option>Pilih Pembayaran</option>
-                    {payment?.map((payment) => (
-                      <option value={payment.id} key={payment.id}>
-                        {payment.bankName}
-                      </option>
-                    ))}
-                  </select>
                 </div>
               </div>
-              {paymentId && (
-                <PaymenentAlert
-                  logo={idPayment.bankLogo}
-                  bankName={idPayment.bankName}
-                  price={new Intl.NumberFormat().format(get.totalPrice)}
-                  number={idPayment.accountNumber}
-                  name={idPayment.accountName}
-                />
-              )}
+              <div className={classes.cardUser}>
+                <h5 className="ms-2">Pilih Metode Pembayaran</h5> <hr/>
+                <div className={classes.btnPay}>
+                  {payment?.map((pay) => (
+                    <button
+                      className="btn"
+                      key={pay.id}
+                      onClick={() => getIdPayment(pay.id)}
+                    >
+                      <img src={pay.bankLogo} alt="" />
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* ticket */}
@@ -217,6 +210,15 @@ const PaymentConfirm = () => {
                     </>
 
                     <div className={classes.contentTicket}>
+                      {idPayment && (
+                        <PaymenentAlert
+                          logo={idPayment.bankLogo}
+                          bankName={idPayment.bankName}
+                          price={new Intl.NumberFormat().format(get.totalPrice)}
+                          number={idPayment.accountNumber}
+                          name={idPayment.accountName}
+                        />
+                      )}
                       <div className="d-flex mt-3">
                         <h6 className="me-3">Total Harga : </h6>
                         <h5>
