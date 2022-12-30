@@ -19,5 +19,15 @@ const PaymentService = {
       throw error;
     }
   },
+
+  getPaymentId: async function (id) {
+    try {
+      const response = await API.get(`/api/payment/${id}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
 }
 export default PaymentService
