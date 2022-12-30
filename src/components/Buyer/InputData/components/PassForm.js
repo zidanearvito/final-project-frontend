@@ -36,7 +36,7 @@ const PassForm = () => {
       firstName,
       lastName,
       NIK: nik,
-      birthDate,
+      brithDate: birthDate,
     };
     const res = await dispatch(createTransaction(dataPass))
       .then((response) => ({ response }))
@@ -53,10 +53,22 @@ const PassForm = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container mt-5">
+        <div class="alert alert-warning margin " role="alert">
+          <h1 class="alert-heading">Perhatian !</h1>
+          <h5>
+            Pastikan anda menginputkan data diri dengan benar, periksa sekali
+            lagi untuk memastikan data yang anda inputkan sudah benar, karena
+            data inputan penumpang nantinya tidak dapat di ubah.
+          </h5>
+          <hr />
+          <p class="mb-0">
+            Sebelum checkout anda harus mengisi data diri terlebih dahulu.
+          </p>
+        </div>
         <div className="wrapper wrapper-content animated fadeInRight">
           <div className="row">
-            <div className="col-md-9">
+            <div className="col-md-8">
               <div className={classes.card}>
                 <h2>Input Data Penumpang</h2>
                 <div className={classes.content}>
@@ -90,7 +102,7 @@ const PassForm = () => {
                         required
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-4">
                       <label htmlFor="inputAddress" className="form-label">
                         Nomor Kependudukan
                       </label>
@@ -131,9 +143,9 @@ const PassForm = () => {
               </div>
             </div>
 
-            <div className="col-md-3">
+            <div className="col-md-4">
               <div className={classes.card2}>
-                <h2>Harga</h2>
+                <h2>Detail Ticket</h2>
                 <div className={classes.content}>
                   <div className="mt-3">
                     <span>Total</span>

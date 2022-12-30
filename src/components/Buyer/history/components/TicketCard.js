@@ -155,14 +155,14 @@ const TicketCard = () => {
                       <div className="col-3">
                         {history.typeTrip.id === 2 ? (
                           <div
-                            className="alert alert-primary text-center"
+                            className="alert alert-secondary text-center"
                             role="alert"
                           >
                             {history.typeTrip.type}
                           </div>
                         ) : (
                           <div
-                            className="alert alert-warning text-center"
+                            className="alert alert-primary text-center"
                             role="alert"
                           >
                             {history.typeTrip.type}
@@ -175,14 +175,14 @@ const TicketCard = () => {
                           {history.passenger.lastName}
                         </p>
                         <h5 className="mb-1">{history.passenger.NIK}</h5>
-                        <p>{history.passenger.brithDate}</p>
+                        <p>{history.passenger.brithDate.split('T')[0]}</p>
                       </div>
                       <div className="col-3">
                         <p className="mb-1">Transaction Code</p>
                         <h5 className="mb-1">{history.transactionCode}</h5>
                       </div>
                       <div className="col-3">
-                        <h5 className="mb-1">Rp. {history.totalPrice}</h5>
+                        <h5 className="mb-1">Rp. {new Intl.NumberFormat().format(history.totalPrice)}</h5>
                         {history.status === "pending" && (
                           <button
                             className="btn rent"

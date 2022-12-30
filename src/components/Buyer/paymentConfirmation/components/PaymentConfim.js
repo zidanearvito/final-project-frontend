@@ -8,6 +8,7 @@ import { getTransactionId } from "../../../../store/actions/transaction";
 import { useLocation, useNavigate } from "react-router-dom";
 import { hideLoader, showLoader } from "../../../../store/actions/loader";
 import LoadData from "../../../UI/LoadData";
+import PaymenentAlert from "../../../UI/PaymentAlert";
 
 const PaymentConfirm = () => {
   const { state } = useLocation();
@@ -15,11 +16,18 @@ const PaymentConfirm = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
   const { payment } = useSelector((state) => state.paymentReducer);
+  // console.log(payment);
   const { dataById, loading } = useSelector(
     (state) => state.transactionReducer
   );
   console.log(loading);
   console.log(payment);
+  const [paymentId, setPaymentId] = useState();
+  console.log(paymentId)
+  const [response, setResponse] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("Success");
+  const [responseTitle, setResponseTitle] = useState("Success");
+
   useEffect(() => {
     dispatch(hideLoader());
     dispatch(getPayment());
@@ -27,10 +35,6 @@ const PaymentConfirm = () => {
     dispatch(showLoader());
   }, [dispatch, state]);
 
-  const [paymentId, setPaymentId] = useState();
-  const [response, setResponse] = useState(false);
-  const [responseMessage, setResponseMessage] = useState("Success");
-  const [responseTitle, setResponseTitle] = useState("Success");
 
   const handlePayment = (event) => {
     setPaymentId(event.target.value);
@@ -97,7 +101,7 @@ const PaymentConfirm = () => {
                   </div>
                   <div className={classes.dataUser}>
                     <h5 className="me-2">Tgl-Lahir : </h5>
-                    <p>{get.passenger.birthDate}</p>
+                    <p>{get.passenger.brithDate.split("T")[0]}</p>
                   </div>
                   <select
                     onChange={handlePayment}
@@ -106,7 +110,7 @@ const PaymentConfirm = () => {
                     value={paymentId}
                   >
                     <option>Pilih Pembayaran</option>
-                    {payment.data?.map((payment) => (
+                    {payment?.map((payment) => (
                       <option value={payment.id} key={payment.id}>
                         {payment.bankName}
                       </option>
@@ -114,14 +118,7 @@ const PaymentConfirm = () => {
                   </select>
                 </div>
               </div>
-              <div className="alert alert-info">
-                <p>
-                  Silahkan Melakukan Pembayaran Rp. 3.000.000 ke <br />
-                  <strong>
-                    BANK BNI 324525142882575 AN. Lets Flight Indonesia
-                  </strong>
-                </p>
-              </div>
+              {paymentId && <PaymenentAlert bankName={payment.bankName} />}
             </div>
 
             {/* ticket */}
@@ -159,7 +156,7 @@ const PaymentConfirm = () => {
                       </div>
                       <div className="col-3">
                         <h5 className="mb-1">
-                          Rp. {get.go.price}
+                          Rp. {new Intl.NumberFormat().format(get.go.price)}
                           <span className="badge bg-secondary">/org</span>
                         </h5>
                       </div>
@@ -195,7 +192,7 @@ const PaymentConfirm = () => {
                           </div>
                           <div className="col-3">
                             <h5 className="mb-1">
-                              Rp. {get.back.price}
+                              Rp. {new Intl.NumberFormat().format(get.go.price)}
                               <span className="badge bg-secondary">/org</span>
                             </h5>
                           </div>
@@ -206,7 +203,9 @@ const PaymentConfirm = () => {
                     <div className={classes.contentTicket}>
                       <div className="d-flex mt-3">
                         <h6 className="me-3">Total Harga : </h6>
-                        <h5>Rp. {get.totalPrice}</h5>
+                        <h5>
+                          Rp. {new Intl.NumberFormat().format(get.totalPrice)}
+                        </h5>
                         <button
                           className="ms-auto btn rent"
                           onClick={createPayment}
