@@ -143,6 +143,15 @@ h5 {
   background-color: #ffa500;
   color: #ffffff;
 }
+.btn-wish{
+  height: fit-content;
+}
+.btn-wish:hover{
+  background-color: #2a5dc4;
+}
+.btn-wish img {
+  width: 20px;
+}
 .margin{
   /* width: 70%; */
   margin-top: 100px;

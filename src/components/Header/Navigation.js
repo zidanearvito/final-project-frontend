@@ -118,6 +118,11 @@ const Navigation = () => {
                         </a>
                       </li>
                       <li>
+                        <a className="dropdown-item" href="/wishlist">
+                          Wishlist
+                        </a>
+                      </li>
+                      <li>
                         <a className="dropdown-item" href="/history">
                           History
                         </a>

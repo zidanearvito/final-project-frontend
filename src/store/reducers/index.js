@@ -6,6 +6,7 @@ import airplaneReducer from "./airplane";
 import ticketReducer from "./ticket";
 import transactionReducer from "./transaction";
 import paymentReducer from "./payment";
+import wishlistReducer from "./wishlist";
 
 export default combineReducers({
   authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   airplaneReducer,
   ticketReducer,
   transactionReducer,
-  paymentReducer
+  paymentReducer,
+  wishlistReducer,
 });

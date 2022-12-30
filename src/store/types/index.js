@@ -39,6 +39,10 @@ export const FILTER_TRANSACTION = "FILTER_TRANSACTION"
 // payment
 export const GET_PAYMENT = "GET_PAYMENT"
 export const PUT_PAYMENT = "PUT_PAYMENT"
-
+//loader
 export const SHOW_LOADER = "SHOW_LOADER"
 export const HIDE_LOADER = "HIDE_LOADER"
+// wishlist
+export const GET_WISHLIST = "GET_WISHLIST"
+export const CREATE_WISHLIST = "CREATE_WISHLIST"
+export const DELETE_WISHLIST = "DELETE_WISHLIST"

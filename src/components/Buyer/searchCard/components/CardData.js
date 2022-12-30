@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import classes from "../css/CardData.module.css";
 import arrow from "../img/arrow.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../../UI/Modal";
+import save from "../img/save.png";
+import { createWishlist } from "../../../../store/actions/wishlist";
 
 const CardData = () => {
   const history = useNavigate();
+  const dispatch = useDispatch();
   const { data } = useSelector((state) => state.ticketReducer);
-  // console.log(data);
   const [ticketGo, setTicketGo] = useState("");
   const [error, setError] = useState(false);
 
@@ -27,6 +29,18 @@ const CardData = () => {
         state: { ticketGo: id, typeTicket: "1" },
       });
     }
+  };
+
+  const wishHandler = async (id) => {
+    // event.preventDefault();
+    const data = {
+      ticketId: id,
+    };
+    await dispatch(createWishlist(data))
+      .then((response) => ({ response }))
+      .catch((error) => ({ error }));
+
+    // console.log(res);
   };
 
   const errorHandler = () => {
@@ -52,6 +66,12 @@ const CardData = () => {
               <div className={classes.title}>
                 <p>{ticket.airplane.company.companyName}</p>
                 <p>{ticket.class}</p>
+                <button
+                  className="btn btn-wish ms-auto"
+                  onClick={() => wishHandler(ticket.id)}
+                >
+                  <img src={save} alt="" />
+                </button>
               </div>
               <div className={classes.content}>
                 <div className="row mx-2 mt-4">
@@ -116,6 +136,12 @@ const CardData = () => {
               <div className={classes.title}>
                 <p>{ticket.airplane.company.companyName}</p>
                 <p>{ticket.class}</p>
+                <button
+                  className="btn btn-wish ms-auto"
+                  // onClick={() => ticketHandler(ticket.id)}
+                >
+                  <img src={save} alt="" />
+                </button>
               </div>
               <div className={classes.content}>
                 <div className="row mx-2 mt-4">

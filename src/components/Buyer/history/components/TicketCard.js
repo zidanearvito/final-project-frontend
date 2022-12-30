@@ -18,7 +18,7 @@ const TicketCard = () => {
   const { data, loading } = useSelector((state) => state.transactionReducer);
   const [modal, setModal] = useState(false);
   const [id, setId] = useState();
-  console.log(data);
+  // console.log(data);
   useEffect(() => {
     dispatch(hideLoader());
     dispatch(getTransactionUser());
@@ -182,6 +182,7 @@ const TicketCard = () => {
                         <h5 className="mb-1">{history.transactionCode}</h5>
                       </div>
                       <div className="col-3">
+                        {history.status === "success" && <p className="mb-1">{history.payment.bankName}</p>}
                         <h5 className="mb-1">Rp. {new Intl.NumberFormat().format(history.totalPrice)}</h5>
                         {history.status === "pending" && (
                           <button
