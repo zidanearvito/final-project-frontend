@@ -5,7 +5,7 @@ export const getPayment = () =>
   async function (dispatch) {
     try {
       const response = await PaymentService.getPayment();
-      dispatch({ type: GET_PAYMENT, payload: response });
+      dispatch({ type: GET_PAYMENT, payload: response.data });
       return response;
     } catch (error) {
       console.log(error);
