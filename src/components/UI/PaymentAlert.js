@@ -1,14 +1,20 @@
 import React from "react";
+import classes from "./PaymentAlert.module.css"
 
 const PaymenentAlert = (props) => {
   return (
     <div className="alert alert-info">
+      <div className={classes.logo}>
+        <img src={props.logo} alt="bank logo" />
+      </div>
       <p>
-        Silahkan Melakukan Pembayaran Rp. 3.000.000 ke <br />
-        <strong>{props.bankName} 324525142882575 AN. Lets Flight Indonesia</strong>
+        Silahkan Melakukan Pembayaran Sebesar Rp. {props.price} ke <br />
+        <strong>
+          {props.bankName} {props.number} AN. {props.name}
+        </strong>
       </p>
     </div>
   );
 };
 
-export default PaymenentAlert
+export default PaymenentAlert;
