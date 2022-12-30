@@ -39,6 +39,7 @@ export const FILTER_TRANSACTION = "FILTER_TRANSACTION"
 // payment
 export const GET_PAYMENT = "GET_PAYMENT"
 export const PUT_PAYMENT = "PUT_PAYMENT"
+export const GET_PAYMENT_ID = "GET_PAYMENT_ID"
 //loader
 export const SHOW_LOADER = "SHOW_LOADER"
 export const HIDE_LOADER = "HIDE_LOADER"
