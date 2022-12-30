@@ -1,0 +1,93 @@
+.ticketTitle {
+    margin: 2rem auto;
+    width: fit-content;
+    padding: 1rem;
+    margin-top: -20px;
+    position: relative;
+  }
+  
+  .card {
+    margin: 2rem auto;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    width: 900px;
+    height: fit-content;
+    border-radius: 14px;
+    padding: 1rem;
+    margin-top: -3px;
+    background-color: white;
+    position: relative;
+  }
+
+  .margin{
+    margin-top: 100px;
+  }
+  
+  .title {
+    padding: 0.5rem;
+    margin-left: 11px;
+    display: flex;
+  }
+  
+  .title p {
+    margin-right: 15px;
+    padding: 10px;
+    width: fit-content;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+    border-radius: 12px;
+    color: #664d03;
+  }
+  
+  .body {
+    padding: 10px;
+    margin-right: 30px;
+    display: flex;
+  }
+  
+  .logo img {
+    width: 100%;
+  }
+  
+  .item {
+    text-align: left;
+    margin-right: 150px;
+  }
+  
+  .arrow img {
+    width: 50px;
+    margin-top: 15px;
+  }
+  
+  .content {
+    border-color: rgb(235, 233, 233);
+    border-style: solid solid none;
+    border-width: 3px 0 0;
+    margin-top: -10px;
+  }
+  
+  .logo img {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  .loading { 
+    margin-top: 200px;
+  }
+  @media (max-width: 777px) {
+    .card {
+      margin: 2rem auto;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      height: fit-content;
+      border-radius: 14px;
+      padding: 1rem;
+      margin-top: -3px;
+      background-color: white;
+      position: relative;
+    }
+    .arrow img {
+      width: 40px;
+      margin-top: -10px;
+    }
+  }
+  
