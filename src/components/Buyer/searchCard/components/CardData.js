@@ -8,7 +8,7 @@ import Modal from "../../../UI/Modal";
 const CardData = () => {
   const history = useNavigate();
   const { data } = useSelector((state) => state.ticketReducer);
-  console.log(data);
+  // console.log(data);
   const [ticketGo, setTicketGo] = useState("");
   const [error, setError] = useState(false);
 
@@ -80,7 +80,7 @@ const CardData = () => {
                   </div>
                   <div className="col-3">
                     <h5 className="mb-1">
-                      Rp. {ticket.price}{" "}
+                      Rp. {new Intl.NumberFormat().format(ticket.price)}{" "}
                       <span className="badge bg-secondary">/org</span>
                     </h5>
                     {data.ticketBack ? (
@@ -144,7 +144,7 @@ const CardData = () => {
                   </div>
                   <div className="col-3">
                     <h5 className="mb-1">
-                      Rp. {ticket.price}{" "}
+                      Rp. {new Intl.NumberFormat().format(ticket.price)}{" "}
                       <span className="badge bg-secondary">/org</span>
                     </h5>
                     <button
