@@ -1,7 +1,8 @@
-import { GET_PAYMENT, PUT_PAYMENT } from "../types";
+import { GET_PAYMENT, GET_PAYMENT_ID, PUT_PAYMENT } from "../types";
 
 const initialState = {
   payment: false,
+  paymentId:false,
   addPayment: false,
 };
 
@@ -18,6 +19,11 @@ const paymentReducer = (state = initialState, action) => {
       return {
         ...state,
         addPayment: payload.data,
+      };
+    case GET_PAYMENT_ID:
+      return {
+        ...state,
+        idPayment: payload.data,
       };
     default:
       return state;
