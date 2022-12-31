@@ -54,21 +54,24 @@ const PassForm = () => {
   return (
     <>
       <div className="container mt-5">
-        <div class="alert alert-warning margin " role="alert">
-          <h1 class="alert-heading">Perhatian !</h1>
-          <h5>
-            Pastikan anda menginputkan data diri dengan benar, periksa sekali
-            lagi untuk memastikan data yang anda inputkan sudah benar, karena
-            data inputan penumpang nantinya tidak dapat di ubah.
-          </h5>
-          <hr />
-          <p class="mb-0">
-            Sebelum checkout anda harus mengisi data diri terlebih dahulu.
-          </p>
-        </div>
         <div className="wrapper wrapper-content animated fadeInRight">
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-4">
+              <div class="alert alert-warning margin " role="alert">
+                <h1 class="alert-heading">Perhatian !</h1>
+                <h5>
+                  Pastikan anda menginputkan data diri dengan benar, periksa
+                  sekali lagi untuk memastikan data yang anda inputkan sudah
+                  benar, karena data inputan penumpang nantinya tidak dapat di
+                  ubah.
+                </h5>
+                <hr />
+                <p class="mb-0">
+                  Sebelum checkout anda harus mengisi data diri terlebih dahulu.
+                </p>
+              </div>
+            </div>
+            <div className="col-md-8 mt-5">
               <div className={classes.card}>
                 <h2>Input Data Penumpang</h2>
                 <div className={classes.content}>
@@ -139,33 +142,6 @@ const PassForm = () => {
                       </button>
                     </div>
                   </form>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-4">
-              <div className={classes.card2}>
-                <h2>Detail Ticket</h2>
-                <div className={classes.content}>
-                  <div className="mt-3">
-                    <span>Total</span>
-                    <h2>Rp. 6.000.000</h2>
-                    <span className="text-muted small">
-                      *Sebelum Lanjut anda harus mengisi data diri terlebih
-                      dahulu
-                    </span>
-                    <div className="m-t-sm">
-                      <div className="btn-group mt-3">
-                        {/* <button
-                          className="btn rent"
-                          type="submit"
-                          // onClick={addPassenger}
-                        >
-                          Checkout
-                        </button> */}
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
