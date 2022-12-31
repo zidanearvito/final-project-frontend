@@ -66,8 +66,8 @@ const PaymentConfirm = () => {
     console.log(res);
     if (res.response) {
       setResponse(true);
-      setResponseTitle(res.response.data.message);
-      setResponseMessage({ message: "Pembayaran anda akan kami proses :)" });
+      setResponseTitle({ message: "Payment"});
+      setResponseMessage(res.response.data.message );
     }
   };
 
@@ -75,8 +75,8 @@ const PaymentConfirm = () => {
     <>
       {response && (
         <Modal
-          title={responseTitle}
-          message={responseMessage.message}
+          title={responseTitle.message}
+          message={responseMessage}
           onConfirm={modalHandler}
         />
       )}
