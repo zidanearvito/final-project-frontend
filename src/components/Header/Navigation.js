@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import classes from "./css/Navigation.module.css";
 import Button from "../UI/MainButton";
 import logo from "./img/logo1.png";
@@ -6,16 +6,19 @@ import { logout } from "../../store/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import user from "./img/icon_user.png";
 import { getUser } from "../../store/actions/auth";
+import { getNotif } from "../../store/actions/notif";
 
 const Navigation = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUser())
+    dispatch(getUser());
+    dispatch(getNotif());
   }, [dispatch]);
 
-  const {data, dataUser} = useSelector((state) => state.authReducer);
-  // console.log(dataUser);
-  const ava = dataUser.avatar
+  const { data, dataUser } = useSelector((state) => state.authReducer);
+  const { notif } = useSelector((state) => state.notifReducer);
+  // console.log(notif);
+  const ava = dataUser.avatar;
   // console.log(ava)
 
   const token = window.localStorage.getItem("accessToken");
@@ -24,7 +27,8 @@ const Navigation = () => {
   return (
     <nav
       className="navbar navbar-expand-lg fixed-top"
-      aria-label="Offcanvas navbar large">
+      aria-label="Offcanvas navbar large"
+    >
       <div className="container px-lg-5 my-2">
         <div className={classes.logo}>
           <a href="/">
@@ -36,14 +40,16 @@ const Navigation = () => {
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasNavbar2"
-          aria-controls="offcanvasNavbar2">
+          aria-controls="offcanvasNavbar2"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
         <div
           className="offcanvas offcanvas-end"
           tabIndex="-1"
           id="offcanvasNavbar2"
-          aria-labelledby="offcanvasNavbar2Label">
+          aria-labelledby="offcanvasNavbar2Label"
+        >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasNavbar2Label">
               Lef.id
@@ -52,7 +58,8 @@ const Navigation = () => {
               type="button"
               className="btn-close btn-close-black"
               data-bs-dismiss="offcanvas"
-              aria-label="Close"></button>
+              aria-label="Close"
+            ></button>
           </div>
           <div className="offcanvas-body">
             <ul className="navbar-nav ms-auto">
@@ -60,7 +67,8 @@ const Navigation = () => {
                 <a
                   className={classes.navLink}
                   aria-current="page"
-                  href="#ourService">
+                  href="#ourService"
+                >
                   Our Services
                 </a>
               </li>
@@ -74,6 +82,26 @@ const Navigation = () => {
                   Why Us
                 </a>
               </li>
+              {data && (
+                <>
+                  <li className={classes.navItem}>
+                    <a
+                      className={classes.navLink}
+                      href="/notifications"
+                    >
+                      Notifications
+                      {/* <span class="badge bg-dark text-white ms-1 rounded-pill"></span> */}
+                      {notif.totalData  ? (
+                        <span className="badge bg-danger text-white ms-1 rounded-pill">
+                          {notif.totalData}
+                        </span>
+                      ): <span className="badge bg-danger text-white ms-1 rounded-pill">
+                      {/* {notif.totalData} */}
+                    </span> }
+                    </a>
+                  </li>
+                </>
+              )}
               {token ? (
                 <>
                   <li className="nav-item">
@@ -97,43 +125,46 @@ const Navigation = () => {
                       />
                     )}
                   </li>
-                  <li className="nav-item dropdown ms-1">
-                    <a
-                      className="nav-link dropdown-toggle text-white ms-auto"
-                      href="/"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      {data}{" "}
-                    </a>
-                    <ul className="dropdown-menu me-5">
-                    <li>
-                        <a className="dropdown-item" href="/">
-                          Home
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/profile">
-                          Update Profile
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/wishlist">
-                          Wishlist
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/history">
-                          History
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/">
-                          <div onClick={() => dispatch(logout())}>Logout</div>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
+                  {data && (
+                    <li className="nav-item dropdown ms-1">
+                      <a
+                        className="nav-link dropdown-toggle text-white ms-auto"
+                        href="/"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        {data}{" "}
+                      </a>
+                      <ul className="dropdown-menu me-5">
+                        <li>
+                          <a className="dropdown-item" href="/">
+                            Home
+                          </a>
+                        </li>
+                        <li>
+                          <a className="dropdown-item" href="/profile">
+                            Update Profile
+                          </a>
+                        </li>
+                        <li>
+                          <a className="dropdown-item" href="/wishlist">
+                            Wishlist
+                          </a>
+                        </li>
+                        <li>
+                          <a className="dropdown-item" href="/history">
+                            History
+                          </a>
+                        </li>
+                        <li>
+                          <a className="dropdown-item" href="/">
+                            <div onClick={() => dispatch(logout())}>Logout</div>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
                 </>
               ) : (
                 <li className="nav-item ms-2">
