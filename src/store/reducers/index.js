@@ -7,6 +7,7 @@ import ticketReducer from "./ticket";
 import transactionReducer from "./transaction";
 import paymentReducer from "./payment";
 import wishlistReducer from "./wishlist";
+import notifReducer from "./notif";
 
 export default combineReducers({
   authReducer,
@@ -17,4 +18,5 @@ export default combineReducers({
   transactionReducer,
   paymentReducer,
   wishlistReducer,
+  notifReducer,
 });
