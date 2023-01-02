@@ -13,6 +13,9 @@ const CardData = () => {
   const { data } = useSelector((state) => state.ticketReducer);
   const [ticketGo, setTicketGo] = useState("");
   const [error, setError] = useState(false);
+  const [response, setResponse] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("Success");
+  const [responseTitle, setResponseTitle] = useState("Success");
 
   const ticketHandler = (id) => {
     if (!ticketGo && data.ticketBack) {
@@ -36,19 +39,34 @@ const CardData = () => {
     const data = {
       ticketId: id,
     };
-    await dispatch(createWishlist(data))
+    const res = await dispatch(createWishlist(data))
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
 
-    // console.log(res);
+    console.log(res);
+    if (res.response) {
+      setResponse(true);
+      setResponseTitle({ message: "Wishlist" });
+      setResponseMessage(res.response.data.message);
+    }
   };
 
   const errorHandler = () => {
     setError(null);
   };
+  const modalHandler = () => {
+    setResponse(false);
+  };
 
   return (
     <>
+      {response && (
+        <Modal
+          title={responseTitle.message}
+          message={responseMessage}
+          onConfirm={modalHandler}
+        />
+      )}
       {error && (
         <Modal
           title={error.title}
