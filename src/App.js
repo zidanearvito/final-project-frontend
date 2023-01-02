@@ -17,6 +17,7 @@ import HistoryIndex from "./components/Buyer/history/HistoryIndex";
 import ConfirmIndex from "./components/Buyer/paymentConfirmation/ConfirmIndex";
 import ProtectedUser from "./protectedUser/protectedUser";
 import WishlistIndex from "./components/Buyer/wishlist/WishlistIndex";
+import NotifIndex from "./components/Buyer/notif/NotifIndex";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/history" element={<HistoryIndex />} />
           <Route path="/wishlist" element={<WishlistIndex />} />
           <Route path="/payment/confirmation" element={<ConfirmIndex />} />
+          <Route path="/notifications" element={<NotifIndex />} />
         </Route>
       </Routes>
     </BrowserRouter>

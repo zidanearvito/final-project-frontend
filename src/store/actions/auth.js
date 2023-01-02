@@ -73,7 +73,7 @@ export const getUser = () =>
     try {
       const response = await AuthService.getUser();
       dispatch({ type: GET_USER, payload: response.data.data });
-      console.log(response.data.data);
+      // console.log(response.data.data);
     } catch (error) {
       console.log(error);
       throw error;

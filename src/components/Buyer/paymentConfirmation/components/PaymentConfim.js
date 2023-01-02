@@ -20,14 +20,14 @@ const PaymentConfirm = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
   const { payment, idPayment } = useSelector((state) => state.paymentReducer);
-  console.log(idPayment);
+  // console.log(idPayment);
   const { dataById, loading } = useSelector(
     (state) => state.transactionReducer
   );
-  console.log(loading);
-  console.log(payment);
+  // console.log(loading);
+  // console.log(payment);
   const [paymentId, setPaymentId] = useState();
-  console.log(paymentId);
+  // console.log(paymentId);
   const [response, setResponse] = useState(false);
   const [responseMessage, setResponseMessage] = useState("Success");
   const [responseTitle, setResponseTitle] = useState("Success");
@@ -63,7 +63,7 @@ const PaymentConfirm = () => {
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
 
-    console.log(res);
+    // console.log(res);
     if (res.response) {
       setResponse(true);
       setResponseTitle({ message: "Payment"});

@@ -14,7 +14,7 @@ const Banner = () => {
     if (!token) {
       setError({
         title: "Login",
-        message: "Anda Belum Login, Silahkan Login Dulu Boskuhhhh",
+        message: "Anda Belum Login, Silahkan Login Dulu",
       });
     } else {
       history("/search");

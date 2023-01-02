@@ -11,7 +11,7 @@ const Search = () => {
   const dispatch = useDispatch();
   const dataAirport = useSelector((state) => state.airportReducer.data);
   const show = useSelector((state) => state.ticketReducer.loading);
-  console.log(show);
+  // console.log(show);
   const [typeTrip, setTypeTrip] = useState("");
   const [originCity, setOriginCity] = useState("");
   const [destinationCity, setDestinationCity] = useState("");
@@ -59,9 +59,9 @@ const Search = () => {
       .catch((error) => ({ error }));
 
     dispatch(hideLoader());
-    console.log(show);
+    // console.log(show);
 
-    console.log(res);
+    // console.log(res);
     if (res.error) {
       setDepartureDate("");
       setReturnDate("");

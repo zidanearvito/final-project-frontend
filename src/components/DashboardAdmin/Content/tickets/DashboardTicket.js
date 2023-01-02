@@ -38,7 +38,6 @@ const DashboardTicket = () => {
   const [airplaneId, setAirplaneId] = useState("");
   const [price, setPrice] = useState("");
   const [capacity, setCapacity] = useState("");
-  const [seatNumber, setSeatNumber] = useState("");
   const [kelas, setKelas] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [modalMes, setModalMes] = useState("");
@@ -48,16 +47,15 @@ const DashboardTicket = () => {
     dispatch(getAirplane());
     dispatch(getAirport());
     setCode(dataById.code);
-    setDepartureDate(dataById.departureDate)
+    setDepartureDate(dataById.departureDate);
     setDepartureTime(dataById.departureTime);
     setArrivalDate(dataById.arrivalDate);
     setArrivalTime(dataById.arrivalTime);
-    setFlightFrom(dataById.flightFrom)
-    setFlightTo(dataById.flightTo)
-    setAirplaneId(dataById.airplaneId)
+    setFlightFrom(dataById.flightFrom);
+    setFlightTo(dataById.flightTo);
+    setAirplaneId(dataById.airplaneId);
     setPrice(dataById.price);
     setCapacity(dataById.capacity);
-    setSeatNumber(dataById.seatNumber);
     setKelas(dataById.class);
   }, [dispatch, dataById]);
 
@@ -91,9 +89,6 @@ const DashboardTicket = () => {
   const handleCapacity = (event) => {
     setCapacity(event.target.value);
   };
-  const handleSeatNumber = (event) => {
-    setSeatNumber(event.target.value);
-  };
   const handleClass = (event) => {
     setKelas(event.target.value);
   };
@@ -111,7 +106,6 @@ const DashboardTicket = () => {
       airplaneId,
       price,
       capacity,
-      seatNumber,
       class: kelas,
     };
     console.log(data);
@@ -137,7 +131,6 @@ const DashboardTicket = () => {
       airplaneId,
       price,
       capacity,
-      seatNumber,
       class: kelas,
     };
     const res = await dispatch(updateTicket(id, data))
@@ -185,7 +178,6 @@ const DashboardTicket = () => {
         plane: resData.airplane.airplaneName,
         price: resData.price,
         cap: resData.capacity,
-        num: resData.seatNumber,
         kelas: resData.class,
       });
     }
@@ -225,7 +217,6 @@ const DashboardTicket = () => {
                     <th scope="col">Tujuan</th>
                     <th scope="col">Pesawat</th>
                     <th scope="col">Harga</th>
-                    <th scope="col">No Kursi</th>
                     <th scope="col">Kelas</th>
                     <th scope="col">Option</th>
                   </tr>
@@ -239,7 +230,6 @@ const DashboardTicket = () => {
                       <td>{ticket.destination.airportName}</td>
                       <td>{ticket.airplane.airplaneName}</td>
                       <td>{"Rp. " + ticket.price}</td>
-                      <td>{ticket.seatNumber}</td>
                       <td>{ticket.class}</td>
                       <td>
                         <button
@@ -252,7 +242,7 @@ const DashboardTicket = () => {
                           <img src={editIcon} alt="icon" />
                         </button>
                         <button
-                        onClick={() => getById(ticket.id)}
+                          onClick={() => getById(ticket.id)}
                           type="button"
                           className="btn btn-blue btn-sm me-1"
                           data-bs-toggle="modal"
@@ -287,7 +277,6 @@ const DashboardTicket = () => {
                 plane={modalMes.plane}
                 price={modalMes.price}
                 cap={modalMes.cap}
-                num={modalMes.num}
                 kelas={modalMes.kelas}
               />
             )}
@@ -502,34 +491,19 @@ const DashboardTicket = () => {
                           htmlFor="exampleFormControlInput1"
                           className="form-label"
                         >
-                          No. Kursi
-                        </label>
-                        <input
-                          value={seatNumber}
-                          onChange={handleSeatNumber}
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="13"
-                          required
-                        />
-                      </div>
-                      <div className="mb-3">
-                        <label
-                          htmlFor="exampleFormControlInput1"
-                          className="form-label"
-                        >
                           Kelas
                         </label>
-                        <input
-                          value={kelas}
+                        <select
+                          defaultValue={kelas}
                           onChange={handleClass}
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="Input"
+                          className="form-select form-select-md mb-3"
+                          aria-label=".form-select-lg example"
                           required
-                        />
+                        >
+                          <option>Pilih Kelas</option>
+                          <option value="Bisnis">Bisnis</option>
+                          <option value="Ekonomi">Ekonomi</option>
+                        </select>
                       </div>
                     </div>
                     <div className="modal-footer">
@@ -634,7 +608,7 @@ const DashboardTicket = () => {
                           type="date"
                           className="form-control"
                           id="exampleFormControlInput1"
-                          />
+                        />
                       </div>
                       <div className="mb-3">
                         <label
@@ -757,34 +731,19 @@ const DashboardTicket = () => {
                           htmlFor="exampleFormControlInput1"
                           className="form-label"
                         >
-                          No. Kursi
-                        </label>
-                        <input
-                          value={seatNumber}
-                          onChange={handleSeatNumber}
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="13"
-                          required
-                        />
-                      </div>
-                      <div className="mb-3">
-                        <label
-                          htmlFor="exampleFormControlInput1"
-                          className="form-label"
-                        >
                           Kelas
                         </label>
-                        <input
-                          value={kelas}
+                        <select
+                          defaultValue={kelas}
                           onChange={handleClass}
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="Input"
+                          className="form-select form-select-md mb-3"
+                          aria-label=".form-select-lg example"
                           required
-                        />
+                        >
+                          <option>Pilih Kelas</option>
+                          <option value="Bisnis">Bisnis</option>
+                          <option value="Ekonomi">Ekonomi</option>
+                        </select>
                       </div>
                     </div>
                     <div className="modal-footer">
@@ -823,7 +782,11 @@ const DashboardTicket = () => {
                         className="img-warning img-fluid"
                       />
                       <h3>Yakin hapus data ?</h3>
-                      <button type="button" className="btn btn-blue me-3 mt-2" onClick={() => deleteById(dataById.id)}>
+                      <button
+                        type="button"
+                        className="btn btn-blue me-3 mt-2"
+                        onClick={() => deleteById(dataById.id)}
+                      >
                         Yes
                       </button>
                       <button

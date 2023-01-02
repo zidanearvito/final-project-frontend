@@ -51,7 +51,7 @@ const Register = () => {
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
 
-    console.log(res.error);
+    // console.log(res.error);
 
     if (res.error) {
       setError(true);
