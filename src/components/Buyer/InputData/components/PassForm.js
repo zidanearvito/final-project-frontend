@@ -6,7 +6,7 @@ import { createTransaction } from "../../../../store/actions/transaction";
 
 const PassForm = () => {
   const { state } = useLocation();
-  console.log(state);
+  // console.log(state);
   const dispatch = useDispatch();
   const history = useNavigate();
   const [firstName, setFirstName] = useState("");
@@ -42,7 +42,7 @@ const PassForm = () => {
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
 
-    console.log(res.response.data.data.id);
+    // console.log(res.response.data.data.id);
     // history("/payment/transaction")
     history("/payment/confirmation", {
       state: {

@@ -54,10 +54,6 @@ const DetailModal = (props) => {
                 <div class="col-4">{props.cap}</div>
               </div>
               <div class="row justify-content-around">
-                <div class="col-4"><h5>No. Kursi</h5></div>
-                <div class="col-4">{props.num}</div>
-              </div>
-              <div class="row justify-content-around">
                 <div class="col-4"><h5>Kelas</h5></div>
                 <div class="col-4">{props.kelas}</div>
               </div>

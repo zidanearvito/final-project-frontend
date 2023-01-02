@@ -84,22 +84,16 @@ const Navigation = () => {
               </li>
               {data && (
                 <>
-                  <li className={classes.navItem}>
-                    <a
-                      className={classes.navLink}
-                      href="/notifications"
-                    >
-                      Notifications
-                      {/* <span class="badge bg-dark text-white ms-1 rounded-pill"></span> */}
-                      {notif.totalData  ? (
+                  {notif && (
+                    <li className={classes.navItem}>
+                      <a className={classes.navLink} href="/notifications">
+                        Notifications
                         <span className="badge bg-danger text-white ms-1 rounded-pill">
                           {notif.totalData}
                         </span>
-                      ): <span className="badge bg-danger text-white ms-1 rounded-pill">
-                      {/* {notif.totalData} */}
-                    </span> }
-                    </a>
-                  </li>
+                      </a>
+                    </li>
+                  )}
                 </>
               )}
               {token ? (

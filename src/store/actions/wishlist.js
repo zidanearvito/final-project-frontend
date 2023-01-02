@@ -6,7 +6,7 @@ export const createWishlist = (data) =>
     try {
       const response = await WishlistService.createWishlist(data);
       dispatch({ type: CREATE_WISHLIST, payload: response.data });
-      console.log(response);
+      // console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -19,7 +19,7 @@ export const getWishlist = () =>
     try {
       const response = await WishlistService.getWishlist();
       dispatch({ type: GET_WISHLIST, payload: response.data });
-      console.log(response);
+      // console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -32,7 +32,7 @@ export const getWishlist = () =>
     try {
       const response = await WishlistService.deleteWishlist(id);
       dispatch({ type: DELETE_WISHLIST, payload: response.data });
-      console.log(response);
+      // console.log(response);
       return response;
     } catch (error) {
       console.log(error);

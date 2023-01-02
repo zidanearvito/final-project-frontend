@@ -54,18 +54,18 @@ const Wishlist = () => {
         {data.data?.map((wish) => (
           <div className={classes.card} key={wish.id}>
             <div className={classes.title}>
-              <p>{wish.ticket.airplaneId}</p>
+              <p>{wish.ticket.airplane.company.companyName}</p>
               <p>{wish.ticket.class}</p>
             </div>
             <div className={classes.content}>
               <div className="row mx-2 mt-4">
                 <div className="col-1">
                   <div className={classes.logo}>
-                    {/* <img src={ticket.airplane.company.companyImage} alt="Logo" /> */}
+                    <img src={wish.ticket.airplane.company.companyImage} alt="Logo" />
                   </div>
                 </div>
                 <div className="col-3">
-                  <p className="mb-1">{wish.ticket.flightFrom}</p>
+                  <p className="mb-1">{wish.ticket.origin.airportName}</p>
                   <h5 className="mb-1">
                     {wish.ticket.departureDate.split("T")[0]}
                   </h5>
@@ -77,7 +77,7 @@ const Wishlist = () => {
                   </div>
                 </div>
                 <div className="col-3">
-                  <p className="mb-1">{wish.ticket.flightTo}</p>
+                  <p className="mb-1">{wish.ticket.destination.airportName}</p>
                   <h5 className="mb-1">
                     {wish.ticket.arrivalDate.split("T")[0]}
                   </h5>
