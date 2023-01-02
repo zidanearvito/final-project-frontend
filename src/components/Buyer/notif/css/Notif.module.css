@@ -1,0 +1,8 @@
+.container {
+    margin: 2rem auto;
+    width: 900px;
+    height: fit-content;
+    padding: 1rem;
+    position: relative;
+    margin-top: 80px;
+}
