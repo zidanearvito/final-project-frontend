@@ -49,3 +49,5 @@ export const CREATE_WISHLIST = "CREATE_WISHLIST";
 export const DELETE_WISHLIST = "DELETE_WISHLIST";
 // notif
 export const GET_NOTIF = "GET_NOTIF";
+export const GET_NOTIF_ID = "GET_NOTIF_ID";
+export const DELETE_NOTIF = "DELETE_NOTIF";

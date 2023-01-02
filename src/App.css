@@ -143,6 +143,15 @@ h5 {
   background-color: #ffa500;
   color: #ffffff;
 }
+.btn-notif {
+  margin-top: -35px;
+  background-color: #e2e3e5;
+  color: #41464b;
+}
+.btn-notif:hover {
+  background-color: #bb2d3b;
+  color: #ffffff;
+}
 .btn-wish{
   height: fit-content;
 }
