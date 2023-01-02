@@ -80,7 +80,7 @@ const Search = () => {
       )}
 
       <div id="search" className={classes.card}>
-        <form className="row gx-3 gy-2 mx-3 align-items-center">
+        <form onSubmit={searchForm} className="row gx-3 gy-2 mx-3 align-items-center">
           <div className="col-6 dm">
             <label htmlFor="specificSizeSelect">Dari</label>
             <select
@@ -160,7 +160,7 @@ const Search = () => {
               <button
                 className="btn btn-blue mt-3"
                 type="submit"
-                onClick={searchForm}
+                // onClick={searchForm}
               >
                 Cari Ticket
               </button>
