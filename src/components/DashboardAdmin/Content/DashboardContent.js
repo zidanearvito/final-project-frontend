@@ -4,7 +4,7 @@ import Dashboard from "../Index";
 import companyIcon from "../Sidebar/img/company.svg";
 import airplaneIcon from "../Sidebar/img/airplane.svg";
 import ticketIcon from "../Sidebar/img/ticket.svg";
-import detailIcon from "./img/eye.svg";
+// import detailIcon from "./img/eye.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getAirport } from "../../../store/actions/airport";
 import { getCompany } from "../../../store/actions/company";
@@ -126,7 +126,8 @@ const DashboardContent = () => {
                     <th scope="col">Passenger</th>
                     <th scope="col">Code</th>
                     <th scope="col">Total Price</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Status</th>
+                    {/* <th scope="col">Action</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -138,11 +139,19 @@ const DashboardContent = () => {
                       <td>{transaction.passenger.firstName}</td>
                       <td>{transaction.transactionCode}</td>
                       <td>{transaction.totalPrice}</td>
-                      <td>
+                      {transaction.status === "success" ? (
+                        <td className="text-success">{transaction.status}</td>
+                      ) : transaction.status === "pending" ? (
+                        <td className="text-warning">{transaction.status}</td>
+                      ) : (
+                        <td className="text-danger">{transaction.status}</td>
+                      )}
+
+                      {/* <td>
                         <button type="button" className="btn btn-sm btn-blue">
                           <img src={detailIcon} alt="Icon" />
                         </button>
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
